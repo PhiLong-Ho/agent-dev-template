@@ -5,6 +5,14 @@
 Requirements/criteria, owning spec, affected surfaces/states, exclusions and risks.
 Test plan: focused iteration checks, completed-candidate gates and exclusions.
 
+## Architecture preflight
+
+- Impact: affected owners/contracts/invariants, or N/A with source-based reason.
+- Fresh expert identity, source/diagram scope and explicit approach verdict.
+- Current/proposed overview and sequence; alternatives and failure/cancel/stale/rollback paths.
+- Settled approach, material questions/user decision, compatibility/migration and tests.
+- Changed diagrams/render inspection; material departure re-review.
+
 ## UI preflight
 
 Expert identity/scope/current captures; recommended before/after task and sketch;

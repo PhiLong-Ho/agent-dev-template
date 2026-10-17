@@ -265,6 +265,7 @@
       "tools/tests/test_run_monitor.py::MonitorTests.test_streams_bytes_before_exit_with_readonly_observation_and_quiet_warning",
       "tools/tests/test_run_monitor.py::MonitorTests.test_timeout_and_cancellation_preserve_both_partial_streams",
       "tools/tests/test_run_monitor.py::MonitorTests.test_viewer_interrupt_detaches_without_control_action"
-    ]
+    ],
+    "WF-ARCH-001": []
   }
 }

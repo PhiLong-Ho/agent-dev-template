@@ -78,3 +78,8 @@ renders and hosted release execution require separate evidence.
 Python 3.11+, Git, pinned dependencies, local command-hook support and native Codex
 trust. Structural indexing needs no paid provider; semantic extraction is excluded.
 UI adopters must declare their actual reference matrix.
+
+## Implementation diagrams
+
+[Component overview and representative sequence](../architecture/features/graph-first.md)
+map source ownership, failure/lifecycle boundaries and verification limits.

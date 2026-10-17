@@ -6,7 +6,10 @@ final candidate freeze. This page continues to own UI decisions and delivery.
 
 ```mermaid
 flowchart TD
-    Request[Request and draft spec] --> UI{UI interaction changes?}
+    Request[Request and draft spec] --> AS{Architecture impact or uncertain?}
+    AS -->|Yes| AE[Fresh architecture expert and settled approach]
+    AE --> UI{UI interaction changes?}
+    AS -->|No with reason| UI
     UI -->|Yes| Expert[Fresh UI expert proposal]
     Expert --> Choice{Material ambiguity?}
     Choice -->|Yes| User[User decision before dependent work]
@@ -21,6 +24,35 @@ flowchart TD
     Both -->|No or changed candidate| Contract
     Both -->|Yes| Deliver[Commit and authorized PR or release]
 ```
+
+## Architecture before implementation
+
+Every task reads the [code/component map and feature atlas](architecture/README.md)
+and records architectural impact in its change record before implementation.
+For a clearly local change, record N/A and a short source-based reason. Possible
+changes to ownership, process/thread boundaries, IPC/API contracts, lifecycle,
+queues, persistence/migration, shared input/geometry, security/privacy, dependencies,
+build topology or release/evidence bindings require the
+[architecture-review skill](../.agents/skills/architecture-review/SKILL.md) and a
+fresh read-only architecture expert first. Uncertain impact triggers review.
+
+The expert inspects current source/tests/diagrams and returns affected owners and
+invariants, current/proposed overview and sequence, alternatives/tradeoffs,
+failure/cancel/stale/rollback/teardown paths, compatibility and verification scope,
+and an explicit approve-approach, changes-needed or unresolved-questions conclusion.
+Record identity/scope/findings/decision in the existing change record. Resolve
+blockers and consequential unclear requirements before dependent work; use the
+existing user-clarification policy. Ordinary authorized technical choices need no
+additional permission. Re-review material implementation departures.
+
+Maintain a source-linked system/component map and overview plus sequence for each
+feature owner. Use [the architecture page template](templates/feature-architecture.md).
+Label diagrams as current implementation, intended contract, debug-only or planned;
+keep failures and verification limits visible. Render/inspect changed diagrams for
+readability and source agreement. Record material lasting decisions as small ADRs
+with alternatives/consequences; avoid an ADR for routine edits. The expert preflight
+is separate from UI review, rendered acceptance and both fresh final reviewers.
+It is an agent-session policy, not a new CI service that authenticates judgment.
 
 Write the observable behavior in SPEC.md and its owning feature contract before
 code. Reconcile stable requirement IDs, scenarios and gaps. For UI work, invoke

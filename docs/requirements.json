@@ -321,6 +321,19 @@
         "tools/tests/test_run_monitor.py::MonitorTests",
         "tools/tests/test_pipeline.py::ProjectTests"
       ]
+    },
+    {
+      "id": "WF-ARCH-001",
+      "criterion": "Source-linked whole-system/component overview and feature overview/sequence atlas stay reconciled; every task screens architecture impact and architecture-affecting or uncertain changes obtain a fresh expert approach review before dependent work, with material questions/departures resolved separately from UI and final reviews.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-010",
+      "coverage": "manual",
+      "suites": [],
+      "dimensions": [
+        "state"
+      ],
+      "checks": [],
+      "gap": "Source/render inspection and workflow scenario walkthrough are manual. No automated gate authenticates expert judgment or guarantees diagram semantics/completeness; documentation does not certify runtime behavior. No new device or product UI verification is implied."
     }
   ]
 }

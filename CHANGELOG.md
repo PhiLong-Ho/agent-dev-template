@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Source-linked component and feature overview/sequence atlas; architecture-impact
+  screening and expert preflight before architectural changes, shared with the template.
+
 - Local command monitoring streams raw output/status with a read-only viewer,
   configurable deadlines and bounded process cleanup.
 

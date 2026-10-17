@@ -187,6 +187,15 @@ Release fixtures must index current code/documents and reject excluded inputs.
   Monitoring MUST preserve previously valid configured command names.
   (WF-MONITOR-001)
 
+- **NFR-010**: Maintain a source-linked system/component overview and an indexed
+  overview and sequence diagram for each feature owner. Record architectural
+  impact for every task. Changes that may affect ownership, interfaces, processes,
+  concurrency, persistence, lifecycle or shared/delivery contracts require a fresh
+  architecture expert's approach review before dependent implementation. Resolve
+  material uncertainty with the user and revisit material departures. Reconcile
+  source and rendered diagrams; architecture review is separate from UI preflight
+  and both final approvals. Documentation is not runtime verification. (WF-ARCH-001)
+
 ### Key Entities
 
 

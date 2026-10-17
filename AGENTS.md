@@ -50,6 +50,16 @@ human/visual approval, account permission or Codex Goal is implied by this polic
 Create a Goal only when explicitly requested. If fresh reviewers are unavailable,
 leave work reviewable and do not push/release. CI validates attestations, not identity.
 
+## Architecture preflight
+
+Every task records architectural impact before implementation. Follow
+`.agents/skills/architecture-review/SKILL.md`: source-linked system/component and
+feature overview/sequence diagrams are required; possible boundary, ownership,
+lifecycle, concurrency, persistence, shared behavior or delivery-contract changes
+need a fresh architecture expert before dependent work. Uncertain impact needs
+review; record N/A with reason for clearly local work. Resolve material unknowns
+and re-review material departures. This role does not replace UI or final reviews.
+
 ## Review focus
 
 Flag missing requirement coverage, divergent surface behavior/style, UI-thread

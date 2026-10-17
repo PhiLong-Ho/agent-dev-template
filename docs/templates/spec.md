@@ -14,6 +14,13 @@
 
 <cancel/failure/recovery, bounds, input, lifecycle, accessibility, persistence>
 
+## Architecture links
+
+Link the feature overview and sequence in `docs/architecture/features/` using
+[the architecture template](feature-architecture.md). Keep technical ownership
+there and observable acceptance here. Record architectural impact and expert
+review in the change plan before dependent implementation.
+
 ## Requirements
 
 ### Functional Requirements

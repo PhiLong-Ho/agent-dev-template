@@ -1,9 +1,14 @@
 # Architecture and ownership
 
+Start with the [source-linked code/component map and feature diagram atlas](architecture/README.md).
+Each feature owner has an overview and representative sequence with failure/lifecycle
+boundaries. Read it before implementation and record architectural impact using
+[the expert preflight](WORKFLOW.md#architecture-before-implementation).
+
 ```mermaid
 flowchart TB
     Spec[Spec and requirement contracts] --> Agent[Tool-enabled agent session]
-    Agent --> UI[UI expert and material user decisions]
+    Agent --> UI[Applicable architecture and UI preflight]
     Agent --> Product[Replaceable product source and tests]
     Product --> Quality[Configured quality commands]
     Quality --> Coverage[Coverage and documentation gates]

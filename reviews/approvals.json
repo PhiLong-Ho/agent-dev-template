@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "candidate_sha256": "c63ef80d72da511702530774298bef7a3033bb1bb7ac01ffd49afc404130408e",
+  "candidate_sha256": "8bc6da8050d546f26aa500886e69a0a203eb1e748fe273772be8264bc37f7674",
   "reviews": [
     {
-      "agent_id": "/root/monitor_final_g",
+      "agent_id": "/root/architecture_publish_a",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T10:31:35Z",
-      "scope": "Complete staged candidate, contracts/workflow, supervisor/CLI/adapters, quality/release integration, tests/coverage/docs and source-bound raw archives/diagram renders. Independently ran focused host tests and integrity/requirement/documentation checks.",
-      "summary": "Approved exact staged candidate, no blocking findings. Windows focused checks and retained full outcomes reconcile. POSIX/hosted CI, actual Android failure paths, broad device regression and resource overhead unverified; local-only evidence. Dex baseline unpublished app commits excluded."
+      "reviewed_at": "2026-10-17T12:37:51.457230+00:00",
+      "scope": "Full staged template diff against 8925b141; source-linked component/feature diagrams, architecture/manual requirement policy, adoption/skills, coverage, archive and 15 current PNGs.",
+      "summary": "No blocking findings. Source/block/render and archive/member bindings verified; document/requirement/coverage/whitespace checks pass. Retained host 95 passed and one Windows skip with unchanged executable inputs. Documentation/policy only; local-only evidence, no DexDroid/runtime/UI/device/performance/release attestation."
     },
     {
-      "agent_id": "/root/monitor_final_h",
+      "agent_id": "/root/architecture_publish_b",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T10:32:02Z",
-      "scope": "Full staged workflow/spec/docs, shared supervisor, Android/configured-command adapters, failure finalization, tests, requirement coverage, source inventories, ZIPs and diagram renders. Independently ran focused host/coverage/docs/requirements checks.",
-      "summary": "Approved exact staged candidate, no blockers. Nonblocking Dex guide/README wording overgeneralizes attach-command availability: direct Gradle/tool runner needs explicit supervisor wrapping; follow-up clarification. Retained outcomes and current source/evidence reconcile. POSIX, actual Android failures, broader regression, overhead and hosted publication unverified. Dex unpublished baseline commits excluded."
+      "reviewed_at": "2026-10-17T12:37:58Z",
+      "scope": "Full staged template diff and relevant source/tests; five feature overview/sequence owners, architecture/spec/skill/adoption consistency, current evidence and all 15 rendered diagrams.",
+      "summary": "No blocking findings. CRG consulted; requirements, coverage, documentation, archive/member/source/PNG bindings and whitespace checks pass. Retained host 95 passes and one documented Windows skip; executable/test/configuration inputs unchanged. Manual judgment and local-only evidence remain explicit; excludes DexDroid and product/device/performance/release approval."
     }
   ]
 }
