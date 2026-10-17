@@ -55,11 +55,19 @@ The upstream UI expert cannot substitute for either final reviewer. If agents
 are unavailable, finish local work and report the missing gate; never synthesize
 approvals. GitHub CI checks attestations and deterministic gates; this repository
 does not provide an unauthenticated unattended AI service. Enable agents in your
-own supported environment. No API subscription, key or global configuration is
-installed. [OpenAI agent instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md),
+own supported environment. No API subscription/key is installed. Global hooks are an explicit optional
+local setup step. [OpenAI agent instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md),
 [skills](https://learn.chatgpt.com/docs/build-skills) and
 [subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) describe the
 Codex integration; equivalent independent agent tools can follow this protocol.
 
 Only create a Codex Goal when explicitly requested. Use a bounded objective,
 completion checks and the existing authorization scope; policy stays in Git.
+
+## Current graph and visual context
+
+Use [graph-first hooks/skill](GRAPH_FIRST.md) for coding and independent review.
+CRG updates during development with bounded diagnosed fallback. Graphify updates
+only in authorized release builds, excluding evidence/local config/images.
+For UI work inspect and reconcile [latest approved master views](ui-reference/README.md)
+against actual renders before final review. Historical test captures remain archived.

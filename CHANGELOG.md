@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+- Shared Claude/Codex graph-first hooks and backed-up local setup.
+- Release-only Graphify AST/document snapshots with noise exclusions and source checksums.
+- Latest approved per-screen/state UI references and stale-reference quality gate.
+
+
 - Normalize documentation file paths consistently for Windows short-name temporary directories.
 
 ## [0.1.0] - 2026-10-17

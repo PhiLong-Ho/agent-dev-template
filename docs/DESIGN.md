@@ -19,3 +19,7 @@ Acceptance inspects real representative rendered surfaces and interactions under
 declared bounds/input/lifecycle states. Do not silently approve goldens. Visual,
 functional and performance conclusions are separately scoped; measurements need
 sample counts, timing boundaries and p50/p95 where applicable.
+
+Maintain the [master UI reference set](ui-reference/README.md): latest approved
+per-screen/state renders, source hashes, configuration and actual approval/evidence.
+Reconcile it with every UI change; do not bless changed images automatically.

@@ -17,3 +17,7 @@ dist/
 !/testresults/**/release-report.md
 !/testresults/**/release-report.json
 /testresults/**/runs/
+
+.code-review-graph/
+graphify-out/
+.graph-first/

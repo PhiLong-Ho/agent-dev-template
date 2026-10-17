@@ -35,7 +35,7 @@ jobs:
           python tools/bootstrap.py check --repository "$GITHUB_REPOSITORY"
           python tools/review_gate.py check --revision HEAD
           git merge-base --is-ancestor HEAD origin/main
-      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pip install -r requirements-dev.txt -r requirements-graph.txt
       - name: Validate coverage and build current release
         run: |
           python tools/coverage.py check

@@ -1,5 +1,7 @@
 # Spec-driven development contract
 
+Use the graph-first skill for coding and review: consult current CRG before broad
+searches/edits; preserve diagnosed fallback. Graphify refreshes only at release.
 Read SPEC.md, docs/DESIGN.md, docs/ARCHITECTURE.md and CONTRIBUTING.md.
 Use `.agents/skills/project-change/SKILL.md` for project changes.
 
@@ -16,7 +18,9 @@ Use `.agents/skills/project-change/SKILL.md` for project changes.
 4. Every test addition/edit/removal MUST reconcile concrete checks in
    docs/requirements.json, run `python tools/coverage.py update`, inspect and commit
    both generated coverage files. Mapping is not execution or scenario completion.
-5. Run `python tools/quality.py`, affected integration/device/E2E checks, inspect
+5. Maintain [latest approved UI references](docs/ui-reference/README.md) for every
+   UI change; inspect renders and record real approval before updating hashes.
+   Run `python tools/quality.py`, affected integration/device/E2E checks, inspect
    actual UI renders and measure performance where applicable. Record exclusions;
    fix causes instead of weakening tests or accepting unreviewed screenshot baselines.
 6. Archive raw bytes under ignored testresults/<version>/runs/<run>/ and external

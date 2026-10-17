@@ -1,0 +1,3 @@
+# Additional case-sensitive path globs, relative to repository; exclusions only.
+docs/coverage.md
+docs/coverage-snapshot.json

@@ -3,6 +3,9 @@ name: project-change
 description: Implement or maintain this repository using spec-first contracts, requirement coverage, evidence archiving and exact-candidate independent review. Use for project features, fixes, tests, tooling, documentation and releases.
 ---
 
+Use the sibling graph-first skill for coding and review. Refresh/consult CRG;
+Graphify is generated only at release, never per commit/turn.
+
 Read AGENTS.md, relevant SPEC/feature contract, docs/WORKFLOW.md, DESIGN.md,
 ARCHITECTURE.md and CONTRIBUTING.md. Honor the user's scope and prior decisions.
 Work on a feature/chore branch. Write observable spec/acceptance first; reconcile
@@ -14,6 +17,8 @@ Implement shared behavior/state/style, then behavior-focused acceptance/E2E test
 Every test addition/edit/removal reconciles concrete checks and refreshes both
 generated coverage files. Run configured quality gates and applicable integration/
 device/visual/performance checks; mappings and historical evidence are not passes.
+For UI changes reconcile docs/ui-reference/catalog.json and affected master PNGs
+after actual rendered approval; stale references block the reference gate.
 Maintain onboarding, concise README/changelog separation and rendered architecture/
 feature diagrams. Use explicit UTF-8 and authoritative formatters.
 

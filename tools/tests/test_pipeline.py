@@ -298,6 +298,7 @@ class ReleaseTests(unittest.TestCase):
         self.git("config", "user.email", "fixture@example.invalid")
         config = project.load()
         config.update(name="fixture", repository="owner/repo", version="0.1.0")
+        config["release"]["knowledge_graph"] = False  # General release integrity fixture.
         project.write_json(self.root / "project.json", config)
         (self.root / ".gitignore").write_text("artifacts/\n", encoding="utf-8")
         (self.root / "CHANGELOG.md").write_text(
@@ -411,6 +412,41 @@ class ReleaseTests(unittest.TestCase):
         )
         project.write_json(self.output / "release-evidence.json", descriptor)
         self.reseal()
+
+    def test_graph_assets_are_required_exported_and_validated_before_publish(self):
+        config = project.load(self.root)
+        config["release"]["knowledge_graph"] = True
+        project.write_json(self.root / "project.json", config)
+        (self.root / "example.py").write_text("def greet():\n    return 'hi'\n", encoding="utf-8")
+        self.git("add", ".")
+        record = project.read_json(self.root / review_gate.RECORD)
+        record["candidate_sha256"] = review_gate.candidate(self.root)
+        project.write_json(self.root / review_gate.RECORD, record)
+        self.git("add", review_gate.RECORD)
+        self.git("commit", "-qm", "graph fixture")
+        self.git("tag", "-f", "v0.1.0")
+        self.package()
+        destination = self.root / "artifacts/graph-export"
+        release.export_package(self.root, self.output, destination)
+        self.assertTrue((destination / "knowledge-graph.zip").is_file())
+        manifest_path = self.output / "knowledge-graph-manifest.json"
+        manifest = project.read_json(manifest_path)
+        manifest["source_commit"] = "wrong"
+        project.write_json(manifest_path, manifest)
+        self.reseal()
+        records = release.inventory(self.root, documents=True, tracked=True)
+        with (
+            mock.patch.object(release.subprocess, "run") as remote,
+            mock.patch.object(release, "inventory", return_value=records),
+        ):
+            with mock.patch.object(
+                release,
+                "context",
+                return_value=(config, project.read_json(self.output / "package.json")["source"]),
+            ):
+                with self.assertRaisesRegex(ValueError, "knowledge graph"):
+                    release.publish(self.root, self.output)
+            remote.assert_not_called()
 
     def test_resealed_raw_test_or_source_context_mismatch_is_rejected(self):
         self.package()

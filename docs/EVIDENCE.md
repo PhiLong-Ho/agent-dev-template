@@ -30,3 +30,7 @@ checksums; these outlive Actions retention until assets/releases are removed.
 See [artifact retention](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow).
 Local test bundles are not automatically uploaded by hosted CI. Transfer within
 authorized scope; do not silently include unrelated content or rewrite originals.
+
+The only intentional screenshot assets in Git are small current approved
+[master UI references](ui-reference/README.md). Historical/test captures stay in
+archives. Master assets and all raw evidence are excluded from graph inputs.

@@ -37,3 +37,12 @@ Local dry runs use `python tools/release.py build --tag v0.1.0 --workflow-url UR
 then `verify`; build requires clean tagged source.
 Tests mock GitHub and do not authorize a real publish. Manual Actions dispatch
 accepts an existing tag and applies the same gates.
+
+## Release knowledge snapshot
+
+The default release.knowledge_graph flag requires pinned graph dependencies and
+[release-only Graphify](GRAPH_FIRST.md). The build creates code/doc graph ZIP and
+input manifest, validates source/file coverage and includes both in sealed exports
+and release checksums. Missing/failed extraction blocks publication. Never install
+Graphify commit/checkout/watch hooks. The graph uses local AST and explicit document
+headings/links; it does not claim semantic inference.
