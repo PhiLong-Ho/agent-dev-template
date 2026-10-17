@@ -52,7 +52,7 @@
       ]
     },
     "tools/tests/test_pipeline.py": {
-      "sha256": "13f68e364bd5c4eb050b2a575d9f6e2c0935013c93faade78043a8b5fafeff29",
+      "sha256": "9719f42e284ef4104f3d04816b6df433600c240abe0823e4dd0837d6dbd36845",
       "cases": [
         "BootstrapTests.test_existing_or_uninspectable_protection_is_never_overwritten",
         "BootstrapTests.test_initialization_changes_identity_and_removes_inherited_approvals_only",
@@ -60,6 +60,7 @@
         "BootstrapTests.test_protection_targets_configured_repo_and_requires_strict_response",
         "BootstrapTests.test_remote_protection_errors_and_incomplete_response_fail",
         "DocumentationTests.test_broken_or_outside_links_fail_but_fenced_examples_are_ignored",
+        "DocumentationTests.test_filesystem_path_aliases_report_link_errors_without_crashing",
         "DocumentationTests.test_repository_docs_and_spec_sections_are_valid",
         "OutcomeTests.test_missing_empty_duplicate_bad_status_and_source_results_fail",
         "OutcomeTests.test_quality_retains_nonzero_command_and_refuses_missing_results",
@@ -154,6 +155,7 @@
     ],
     "WF-DOC-001": [
       "tools/tests/test_pipeline.py::DocumentationTests.test_broken_or_outside_links_fail_but_fenced_examples_are_ignored",
+      "tools/tests/test_pipeline.py::DocumentationTests.test_filesystem_path_aliases_report_link_errors_without_crashing",
       "tools/tests/test_pipeline.py::DocumentationTests.test_repository_docs_and_spec_sections_are_valid"
     ]
   }

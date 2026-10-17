@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Normalize documentation file paths consistently for Windows short-name temporary directories.
+
 ## [0.1.0] - 2026-10-17
 
 - Initial reusable spec-first workflow, UI preflight and two-agent candidate gate.

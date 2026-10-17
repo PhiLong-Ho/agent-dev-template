@@ -254,6 +254,26 @@ class OutcomeTests(unittest.TestCase):
 
 
 class DocumentationTests(unittest.TestCase):
+    def test_filesystem_path_aliases_report_link_errors_without_crashing(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder).resolve()
+            path = root / "README.md"
+            path.write_text("[bad](missing.md)\n[escape](../outside.md)\n", encoding="utf-8")
+            alias = root.parent / (root.name + "-short-alias")
+            original = Path.resolve
+
+            def resolve(candidate, *args, **kwargs):
+                if candidate == alias:
+                    return root
+                if candidate == alias / "README.md":
+                    return path
+                return original(candidate, *args, **kwargs)
+
+            with mock.patch.object(Path, "resolve", autospec=True, side_effect=resolve):
+                errors = check_docs.check_links(alias, [alias / "README.md"])
+            self.assertEqual(len(errors), 2)
+            self.assertTrue(all("missing/outside local link" in error for error in errors))
+
     def test_broken_or_outside_links_fail_but_fenced_examples_are_ignored(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

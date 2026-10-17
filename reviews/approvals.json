@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "candidate_sha256": "86ca4ba5311629104a088b0b3d57755bb8f6ef730d051491cf44dd51bd6ec777",
+  "candidate_sha256": "84fa0d30c19e999c4d17a4104e9702f0c39fb3d83bbf59121cae45dcb712e011",
   "reviews": [
     {
-      "agent_id": "/root/template_review_e",
+      "agent_id": "/root/template_windows_review_a",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T07:16:44.261445+00:00",
-      "scope": "Independent full58-file staged bootstrap review: contracts/skills/requirements/coverage, source/tests/workflows/protection, adoption/onboarding/evidence/release;55-case host quality and validators; actual ZIP/member/source provenance;3 renders; release export/import/hidden transfer; skill tabletop.",
-      "summary": "Explicitly approved exact candidate without blockers. Current local claims match evidence. Ambiguous UI work waits for material user decisions; exact corrections avoid repeated approval. Live Ubuntu/Actions, remote protection/publication/retention, novice onboarding, other stack adapters and product device/UI/performance remain unverified; attestations do not authenticate reviewer identity."
+      "reviewed_at": "2026-10-17T07:22:34Z",
+      "scope": "Independent staged spec/requirements/coverage/code/regression/docs/evidence; local56-case quality and validators; outer archive and both original CI archives/source fingerprints; real Win32 short alias and outside document input exercise.",
+      "summary": "Explicitly approved exact candidate without blockers. Root/document normalization fixes the preserved Windows failure without weakening assertions. Original Ubuntu55 pass/Windows54 pass+1error remain failures as appropriate. Hosted fix rerun/release, novice onboarding and product device/UI/performance remain unverified; protected PR/current host required before merge."
     },
     {
-      "agent_id": "/root/template_review_f",
+      "agent_id": "/root/template_windows_review_b",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T07:16:51Z",
-      "scope": "Independent staged contracts/skills/requirements/coverage, application/tooling source/tests, configuration/hooks/workflows/onboarding/adoption/evidence/release;55-case host gates and archive/source verification;3 rendered diagrams; release export/hidden transfer/failure tests and policy tabletop.",
-      "summary": "Explicitly approved exact candidate with no blocking findings. Local outcomes/provenance and scope/gaps are accurate; hook executable mode confirmed. Adoption preserves existing settings and evidence availability is honest. Live hosted/platform/remote protection/publication/retention, novice onboarding and project-specific E2E/device/visual/performance remain unverified. No publication was performed during review."
+      "reviewed_at": "2026-10-17T07:22:27Z",
+      "scope": "Independent full staged narrow correction/contracts/mapping/generated coverage/regression/evidence; local56-case quality; source/member hashes and original traceback; regression checked against original implementation and outside-file rejection.",
+      "summary": "Explicitly approved exact candidate without blockers. Regression rejects original checker; outside files reject before read. No weakened assertions, raw tracked evidence or unsupported hosted pass claims. Hosted rerun, protection reconfiguration/release and device/UI/performance excluded; approvals gate and protected PR/current host still required."
     }
   ]
 }

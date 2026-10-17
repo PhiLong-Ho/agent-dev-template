@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "53c5507966c7414f1f7729b14713fc6d5ed8badbbf68fe5f2d595fc655c72588",
+  "archive_bytes": 38721,
+  "file_count": 13,
+  "raw_bytes": 62938,
+  "created_utc": "2026-10-17T07:21:07.757280+00:00",
+  "context": {
+    "scope": "Windows short-path fix, local56 passing cases on uncommitted source. Original hosted initial Ubuntu55 passed/Windows54 passed+1error archives preserved. Main protection readback only; no hosted fix rerun or release publication at capture.",
+    "packaging_commit": "fe5117ccfa84ced629b391823b3a9eac3b258bc2",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\agent-dev-template\\artifacts\\evidence\\20261017T072053Z-windows-paths\\evidence.zip"
+  }
+}

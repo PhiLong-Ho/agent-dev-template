@@ -114,6 +114,8 @@ source/result/artifact hashes; publication must refuse before remote mutations.
   of artifact extension or dot-prefixed filename, excluding intermediate/raw directories.
 - **NFR-007**: README stays concise; maintain onboarding, design, architecture and
   owning feature diagrams. Check links, lint/format and documentation integrity.
+  Documentation paths MUST normalize filesystem aliases consistently; Windows
+  short/long path forms MUST return link findings rather than crash validation.
   Mark device/E2E/visual/performance gaps; never silently bless screenshot baselines.
 
 ### Key Entities
