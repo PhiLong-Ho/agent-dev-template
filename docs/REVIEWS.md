@@ -1,5 +1,9 @@
 # Independent review before publication
 
+Final reviewers also inspect the architecture-impact note, applicable expert
+approach decision and source-consistent component/feature diagrams. The upstream
+architecture expert cannot serve as either fresh final reviewer for that change.
+
 Every push and release requires **two fresh independent review agents**. This
 implements NFR-003 / WF-REVIEW-001. Complete spec, implementation, acceptance,
 coverage, formatting and evidence first. Read [coverage](coverage.md) for gaps.

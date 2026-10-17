@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "4c900a5793f30b5b36c27afcbf1d7115aeb3e6472ed14092ba274c26e516c835",
+  "archive_bytes": 2924238,
+  "file_count": 84,
+  "raw_bytes": 3344503,
+  "created_utc": "2026-10-17T12:33:17.141947+00:00",
+  "context": {
+    "scope": "Architecture documentation only: 15 template diagrams inspected; host 95 passed and one POSIX-only permission case skipped on Windows. Expert architecture semantics reviewed separately from final approvals. No product UI/runtime/release certification; local-only archive.",
+    "packaging_commit": "8925b141a713391f0ff5d03e2d1f6aa40af38e7f",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\agent-dev-template\\artifacts\\evidence\\architecture-atlas-20261017\\evidence.zip"
+  }
+}

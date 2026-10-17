@@ -103,3 +103,8 @@ Python standard library and local disk. No always-on service, network dashboard,
 model/session telemetry collector, automatic retries or scenario selectors. Existing
 Android PASS labels are observed assertions, not independently counted test cases.
 Source provenance comes from the owning runner; generic commands may have no repo.
+
+## Implementation diagrams
+
+[Component overview and representative sequence](../architecture/features/local-monitoring.md)
+map source ownership, failure/lifecycle boundaries and verification limits.

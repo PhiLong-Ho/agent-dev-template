@@ -14,6 +14,11 @@ verify source/tests. Graph misses and uncertain impact require scoped inspection
 and broader checks; graph neighbors alone cannot justify excluding a scenario.
 Graphify remains release-only.
 
+Read the [code map and feature atlas](architecture/README.md) first. Record
+architectural impact; use the [architecture preflight](WORKFLOW.md#architecture-before-implementation)
+for possible or uncertain impact before dependent work. Preserve the expert
+approach decision through iteration and revisit material departures.
+
 Reproduce a bug before fixing it when feasible. Use a narrow reproduction during
 iteration, implement the cause, then add/update behavior-focused regression tests.
 Keep unrelated cleanup separate. Preserve ownership, lifecycle and failure-handling

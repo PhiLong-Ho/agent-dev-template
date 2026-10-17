@@ -9,7 +9,8 @@ for this project. Read its AGENTS.md, docs/WORKFLOW.md and onboarding first.
 Inspect our current stack, scripts, tests, CI, design conventions and repository
 policies. Preserve working code/history and stricter existing rules. On a branch,
 adapt the spec-first contracts, UI expert preflight/material-user-decision policy,
-coverage freshness, shared design/architecture diagrams, evidence archiving,
+coverage freshness, architecture-impact screening and expert approach review,
+source-linked component/feature overview and sequence atlas, shared design, evidence archiving,
 developer onboarding, two fresh exact-candidate reviewer gate and protected PR/
 release workflow to our actual stack. Do not copy template test outcomes,
 historical approval records, product code, secrets or account configuration.

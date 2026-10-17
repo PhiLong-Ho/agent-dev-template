@@ -33,6 +33,12 @@ Read SPEC.md, [design](DESIGN.md), [architecture](ARCHITECTURE.md),
 `src/` is replaceable example code; `tools/` implements workflow gates; tests live
 in `tests/` and `tools/tests/`; `.agents/skills/` routes agent work.
 
+Read the [code map and feature diagram atlas](architecture/README.md) before
+choosing files to change. Every task records architecture impact; use the
+[expert preflight](WORKFLOW.md#architecture-before-implementation) for possible or
+uncertain architectural changes. Add the new feature to both inventories and
+maintain its overview/sequence with its source, failure paths and verification gaps.
+
 ## Adapt to your stack
 
 Edit project.json: project identity/version, `commands` (format/lint/build/test),

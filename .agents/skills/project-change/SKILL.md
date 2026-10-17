@@ -6,6 +6,12 @@ description: Implement or maintain this repository using spec-first contracts, r
 Use the sibling graph-first skill for coding and review. Refresh/consult CRG;
 Graphify is generated only at release, never per commit/turn.
 
+Read docs/architecture/README.md and the owning feature architecture before
+implementation. Record impact for every task; use the sibling architecture-review
+skill and a fresh expert for possible architectural or uncertain impact. Record
+findings/decision and revisit material departures; this is separate from UI and
+the two final approvals.
+
 Use docs/CODING_PRACTICE.md for targeted iteration, complete candidate checks,
 source-bound evidence reuse, timings/rerun reasons and a freeze before final reviews.
 Keep reusable guidance aligned with adopting projects and platform details there.

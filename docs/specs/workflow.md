@@ -11,6 +11,21 @@ are complete, then current quality/evidence plus two fresh approvals permit an
 authorized protected PR. Independent tests inject stale mappings, changed candidates,
 unsafe/corrupt evidence and missing results; every gate must fail observably.
 
+### User Story 2 - Understand architecture before implementation (Priority: P1)
+
+**Independent Test**: Walk through a local text fix, a changed command/result
+contract and uncertain process-lifetime impact using the atlas and expert skill.
+
+**Acceptance Scenarios**:
+
+1. Given a feature owner, when planning a task, then source owners, overview and
+   sequence are linked from the atlas. New product owners extend both indexes.
+2. Given possible or uncertain architectural impact, when planning implementation,
+   then a fresh expert inspects source/invariants/alternatives/failure paths and
+   records an explicit approach verdict before dependent work.
+3. Given local work, when screening impact, then N/A has a reason; material
+   departures re-open expert review. UI and final reviewers remain separate.
+
 ### Edge Cases
 
 Material ambiguity waits for the user; exact authorized corrections do not repeat
@@ -21,7 +36,7 @@ template approval records cannot approve changed project setup.
 
 ### Functional Requirements
 
-FR-001 through FR-003 and NFR-001 through NFR-007 are owned by [SPEC](../../SPEC.md).
+FR-001 through FR-003, NFR-001 through NFR-007 and NFR-010 (WF-ARCH-001) are owned by [SPEC](../../SPEC.md).
 Use [the coverage inventory](../coverage.md) for concrete checks, dimensions and gaps.
 
 ### Key Entities
@@ -53,3 +68,8 @@ publication; real reports state their scope and counts without app/device claims
 ## Assumptions
 
 Agent sessions and project-specific stack adapters remain explicit prerequisites.
+
+## Implementation diagrams
+
+[Component overview and representative sequence](../architecture/features/workflow.md)
+map source ownership, failure/lifecycle boundaries and verification limits.

@@ -22,7 +22,7 @@ agent configuration are not copied. AI reviews run in your agent session; CI
 validates their recorded candidate approvals, not reviewer identity.
 Long runs print an attach command for the [local status viewer](docs/LOCAL_MONITORING.md).
 
-[Coding practice](docs/CODING_PRACTICE.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) ·
+[Coding practice](docs/CODING_PRACTICE.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) | [Code and feature atlas](docs/architecture/README.md) ·
 [Design](docs/DESIGN.md) · [Coverage](docs/coverage.md) ·
 [Release guide](docs/RELEASING.md) · [Changelog](CHANGELOG.md)
 

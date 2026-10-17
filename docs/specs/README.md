@@ -10,3 +10,8 @@ and latest approved UI-reference behavior.
 
 [Local development monitoring](local-monitoring.md) owns live observation, deadlines,
 raw-stream preservation and an independent read-only status view.
+
+[Reference CLI](../architecture/features/reference-cli.md) owns replaceable FR-001 behavior;
+[coding practice](../CODING_PRACTICE.md) owns NFR-008/WF-PRACTICE-001.
+The [complete architecture atlas](../architecture/README.md) links every current
+feature owner to its component overview and sequence.
