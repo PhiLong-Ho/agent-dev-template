@@ -196,6 +196,14 @@ Release fixtures must index current code/documents and reject excluded inputs.
   source and rendered diagrams; architecture review is separate from UI preflight
   and both final approvals. Documentation is not runtime verification. (WF-ARCH-001)
 
+- **NFR-011**: Personal application screenshots, device dumps/logs and account
+  content MUST remain private local evidence and MUST NOT enter Git or public
+  artifacts. Public host uploads MUST include only their current run and pass an
+  indexed-path and actual-input privacy guard; rejected inputs MUST block upload.
+  Intentional public UI references MUST use reviewed synthetic fixtures. Privacy
+  withdrawal MUST be explicit and never count as verified evidence; retained
+  historical files MUST still pass original integrity checks. (WF-PRIVACY-001)
+
 ### Key Entities
 
 

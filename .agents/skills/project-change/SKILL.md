@@ -51,3 +51,8 @@ coverage/gaps and linked Markdown/JSON reports with verified artifact/raw eviden
 source bindings. No credentials, unattended service, global config or Codex Goal
 is implied. If fresh reviewers are unavailable, leave local work reviewable and
 report the explicit missing gate instead of fabricating approvals.
+
+Follow docs/PRIVACY.md: real app/device captures stay private local. Use synthetic
+fixtures by default. Public host inputs and indexed paths must pass check_privacy;
+privacy withdrawal overrides historical retention without certifying missing bytes.
+Never reintroduce removed evidence from an old clone/history.

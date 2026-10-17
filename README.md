@@ -30,3 +30,6 @@ For an existing project, use [the adoption guide and ready-to-use prompt](docs/A
 
 Optional [Claude/Codex graph-first setup](docs/GRAPH_FIRST.md) and
 [latest approved UI references](docs/ui-reference/README.md).
+
+Test evidence: [privacy policy](docs/PRIVACY.md). Personal app captures stay local;
+public artifacts contain only guarded host results and reviewed synthetic fixtures.

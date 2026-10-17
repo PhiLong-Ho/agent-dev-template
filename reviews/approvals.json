@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "candidate_sha256": "8bc6da8050d546f26aa500886e69a0a203eb1e748fe273772be8264bc37f7674",
+  "candidate_sha256": "52785dbb49d119541ecd843f68b134c4148b21da4fab890c9b120726ac2cd74e",
   "reviews": [
     {
-      "agent_id": "/root/architecture_publish_a",
+      "agent_id": "/root/privacy_final_a",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T12:37:51.457230+00:00",
-      "scope": "Full staged template diff against 8925b141; source-linked component/feature diagrams, architecture/manual requirement policy, adoption/skills, coverage, archive and 15 current PNGs.",
-      "summary": "No blocking findings. Source/block/render and archive/member bindings verified; document/requirement/coverage/whitespace checks pass. Retained host 95 passed and one Windows skip with unchanged executable inputs. Documentation/policy only; local-only evidence, no DexDroid/runtime/UI/device/performance/release attestation."
+      "reviewed_at": "2026-10-17T13:09:05Z",
+      "scope": "Reusable privacy guard, workflow boundaries, specs/tests and local evidence; no history rewrite or remote erasure claim.",
+      "summary": "No blocking findings. Independently verified staged content, contracts, actual guard behavior, coverage and archive/member/source/diagram bindings. Paths/signatures are bounded privacy checks, not semantic DLP or proof of remote history/cache cleanup."
     },
     {
-      "agent_id": "/root/architecture_publish_b",
+      "agent_id": "/root/privacy_final_b",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T12:37:58Z",
-      "scope": "Full staged template diff and relevant source/tests; five feature overview/sequence owners, architecture/spec/skill/adoption consistency, current evidence and all 15 rendered diagrams.",
-      "summary": "No blocking findings. CRG consulted; requirements, coverage, documentation, archive/member/source/PNG bindings and whitespace checks pass. Retained host 95 passes and one documented Windows skip; executable/test/configuration inputs unchanged. Manual judgment and local-only evidence remain explicit; excludes DexDroid and product/device/performance/release approval."
+      "reviewed_at": "2026-10-17T13:09:29Z",
+      "scope": "Reusable privacy guard, workflow boundaries, specs/tests and local evidence; no history rewrite or remote erasure claim.",
+      "summary": "No blocking findings. Independently verified staged content, contracts, actual guard behavior, coverage and archive/member/source/diagram bindings. Paths/signatures are bounded privacy checks, not semantic DLP or proof of remote history/cache cleanup."
     }
   ]
 }

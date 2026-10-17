@@ -37,8 +37,12 @@ jobs:
         run: |
           python tools/coverage.py check
           python tools/quality.py --evidence "testresults/unreleased/runs/ci-$GITHUB_RUN_ID-${{ matrix.os }}"
-      - name: Bundle only current run, including available failures
+      - name: Check public host input
+        id: public_evidence
         if: always()
+        run: python tools/check_privacy.py --evidence "testresults/unreleased/runs/ci-$GITHUB_RUN_ID-${{ matrix.os }}"
+      - name: Bundle only current run, including available failures
+        if: always() && steps.public_evidence.outcome == 'success'
         run: |
           run="testresults/unreleased/runs/ci-$GITHUB_RUN_ID-${{ matrix.os }}"
           mkdir -p "$run"
@@ -47,7 +51,7 @@ jobs:
             --scope "Current host CI attempt; inspect raw outcomes. No device/visual/performance certification." \
             --workflow-url "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.public_evidence.outcome == 'success'
         with:
           name: host-evidence-${{ matrix.os }}
           path: artifacts/current-run/

@@ -54,7 +54,7 @@
       ]
     },
     "tools/tests/test_maintenance.py": {
-      "sha256": "b5645380b6880b82c9ae63a36c2ad7e32b0e39c5c52b222cfd6646f3a4d0964f",
+      "sha256": "b16ea9de136a8caa2bfa2a6a371b178ed24852ad005e2cc04096e20833051f47",
       "cases": [
         "CoverageTests.test_added_test_requires_mapping_before_refresh",
         "CoverageTests.test_changed_assertion_requires_refresh_even_when_case_name_is_unchanged",
@@ -108,6 +108,19 @@
         "ReleaseTests.test_resealed_wrong_archive_commit_is_rejected",
         "ReleaseTests.test_valid_package_binds_reports_counts_sources_and_assets",
         "ReleaseTests.test_wrong_tag_dirty_source_and_stale_reviews_refuse_build"
+      ]
+    },
+    "tools/tests/test_privacy.py": {
+      "sha256": "cac267765f9d085dcfe9084f6adeaa781104ecca8ac91d6a817867a1eaecc368",
+      "cases": [
+        "PrivacyTests.test_current_host_reports_pass_without_uploading_other_runs",
+        "PrivacyTests.test_empty_and_linked_public_inputs_fail",
+        "PrivacyTests.test_public_host_rejects_media_nested_archives_and_device_metadata",
+        "PrivacyTests.test_raw_screenshots_logs_and_metadata_cannot_be_tracked",
+        "PrivacyTests.test_renamed_capture_is_rejected_by_signature",
+        "PrivacyTests.test_repository_guard_checks_new_index_paths_and_ignored_local_capture",
+        "PrivacyTests.test_review_candidate_and_committed_refs_reject_raw_paths",
+        "PrivacyTests.test_safe_summaries_and_application_assets_are_allowed"
       ]
     },
     "tools/tests/test_run_monitor.py": {
@@ -266,6 +279,16 @@
       "tools/tests/test_run_monitor.py::MonitorTests.test_timeout_and_cancellation_preserve_both_partial_streams",
       "tools/tests/test_run_monitor.py::MonitorTests.test_viewer_interrupt_detaches_without_control_action"
     ],
-    "WF-ARCH-001": []
+    "WF-ARCH-001": [],
+    "WF-PRIVACY-001": [
+      "tools/tests/test_privacy.py::PrivacyTests.test_current_host_reports_pass_without_uploading_other_runs",
+      "tools/tests/test_privacy.py::PrivacyTests.test_empty_and_linked_public_inputs_fail",
+      "tools/tests/test_privacy.py::PrivacyTests.test_public_host_rejects_media_nested_archives_and_device_metadata",
+      "tools/tests/test_privacy.py::PrivacyTests.test_raw_screenshots_logs_and_metadata_cannot_be_tracked",
+      "tools/tests/test_privacy.py::PrivacyTests.test_renamed_capture_is_rejected_by_signature",
+      "tools/tests/test_privacy.py::PrivacyTests.test_repository_guard_checks_new_index_paths_and_ignored_local_capture",
+      "tools/tests/test_privacy.py::PrivacyTests.test_review_candidate_and_committed_refs_reject_raw_paths",
+      "tools/tests/test_privacy.py::PrivacyTests.test_safe_summaries_and_application_assets_are_allowed"
+    ]
   }
 }

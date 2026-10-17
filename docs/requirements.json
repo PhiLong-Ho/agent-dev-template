@@ -32,6 +32,9 @@
     },
     "tools/tests/test_run_monitor.py": {
       "entry": "tools/tests/test_run_monitor.py"
+    },
+    "tools/tests/test_privacy.py": {
+      "entry": "tools/tests/test_privacy.py"
     }
   },
   "requirements": [
@@ -334,6 +337,24 @@
       ],
       "checks": [],
       "gap": "Source/render inspection and workflow scenario walkthrough are manual. No automated gate authenticates expert judgment or guarantees diagram semantics/completeness; documentation does not certify runtime behavior. No new device or product UI verification is implied."
+    },
+    {
+      "id": "WF-PRIVACY-001",
+      "criterion": "Raw personal/device evidence is rejected from tracked paths and public-host input; private local capture remains allowed. Publication scope is current host run only; explicit withdrawal does not certify missing evidence.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-011",
+      "coverage": "partial",
+      "gap": "Guard checks paths and capture signatures, not all semantic private text or encoded data. Reviewed synthetic fixtures remain a human obligation. Remote history replacement, cached PR refs and clone cleanup need separate verified maintenance.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_privacy.py"
+      ],
+      "checks": [
+        "tools/tests/test_privacy.py::PrivacyTests"
+      ]
     }
   ]
 }

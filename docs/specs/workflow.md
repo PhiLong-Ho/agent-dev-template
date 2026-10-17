@@ -73,3 +73,13 @@ Agent sessions and project-specific stack adapters remain explicit prerequisites
 
 [Component overview and representative sequence](../architecture/features/workflow.md)
 map source ownership, failure/lifecycle boundaries and verification limits.
+
+## Evidence privacy acceptance
+
+- Given raw tracked test screenshots/logs, the host privacy gate fails.
+- Given contaminated current host inputs, packaging/upload is withheld.
+- Given safe current host reports, the guard permits existing packaging.
+- Given explicit privacy withdrawal, unavailable evidence is not counted as verified;
+  retained records still fail on missing, changed, duplicate or unsafe paths.
+
+See [privacy boundary](../PRIVACY.md) and the stable privacy requirement mapping.

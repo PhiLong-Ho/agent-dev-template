@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import sys
 
+import check_privacy
 import check_docs
 import check_requirements
 import coverage
@@ -54,6 +55,7 @@ def run(root, folder):
                 project.read_json(root / "docs/requirements.json"), root
             ),
         ),
+        ("privacy", lambda: check_privacy.repository_errors(root)),
         ("coverage", lambda: coverage.check(root)),
         ("documentation", lambda: check_docs.validate(root)),
     ]:
