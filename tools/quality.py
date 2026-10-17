@@ -1,6 +1,8 @@
 """Run actual configured gates, retaining raw outcomes even when a command fails."""
 
 import argparse
+import hashlib
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 import sys
@@ -62,7 +64,18 @@ def run(root, folder):
             validation.append({"name": name, "exit_code": 0})
         except (ValueError, OSError, KeyError, SyntaxError) as error:
             validation.append({"name": name, "exit_code": 1, "error": str(error)})
-    outcomes = project.execute(root, config["commands"], folder, evidence=folder.resolve())
+    outcomes = project.execute(
+        root,
+        config["commands"],
+        folder,
+        evidence=folder.resolve(),
+        monitor_context={
+            "source_commit": before["commit"],
+            "source_content_sha256": hashlib.sha256(
+                json.dumps(before["files"], sort_keys=True).encode()
+            ).hexdigest(),
+        },
+    )
     report = {
         "schema_version": 1,
         "created_utc": datetime.now(timezone.utc).isoformat(),

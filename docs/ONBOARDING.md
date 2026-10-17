@@ -1,5 +1,8 @@
 # Developer onboarding
 
+Use [coding practice](CODING_PRACTICE.md) for daily implementation and test selection.
+Attach [local monitoring](LOCAL_MONITORING.md) to observe long commands independently.
+
 ## Generate, install and understand
 
 Use [GitHub templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)

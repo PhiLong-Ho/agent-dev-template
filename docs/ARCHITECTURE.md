@@ -65,3 +65,24 @@ flowchart TB
     Graphify --> Seal[Graph ZIP and manifest in validated release package]
     Sources[Relevant UI sources and approved captures] --> Reference[Catalog source and image integrity gate]
 ~~~
+
+## Local command observation
+
+The supervisor owns child lifetime and byte-preserving raw capture. The independent
+viewer only reads atomic status snapshots. Owning runners decide test acceptance
+and cleanup outcomes; heartbeat or completed command status is not full acceptance.
+
+```mermaid
+flowchart LR
+    Runner[Quality or device adapter] --> Supervisor[Bounded command supervisor]
+    Supervisor --> Child[Owned process tree]
+    Child --> Raw[Live stdout and stderr]
+    Raw --> Extract[Bounded progress extraction]
+    Supervisor --> Status[Atomic status and events]
+    Extract --> Status
+    Status --> Observer[Independent read-only terminal]
+    Supervisor --> Outcome[Actual exit and cleanup]
+    Outcome --> Runner
+```
+
+See [monitoring](LOCAL_MONITORING.md) for deadlines, limits and verified scope.

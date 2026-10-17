@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+- Local command monitoring streams raw output/status with a read-only viewer,
+  configurable deadlines and bounded process cleanup.
+
+- Dedicated coding-practice guidance for staged verification, evidence reuse,
+  safe parallel work and candidate freezing, aligned with DexDroid.
+
 - Shared Claude/Codex graph-first hooks and backed-up local setup.
 - Release-only Graphify AST/document snapshots with noise exclusions and source checksums.
 - Latest approved per-screen/state UI references and stale-reference quality gate.

@@ -77,7 +77,7 @@
       ]
     },
     "tools/tests/test_pipeline.py": {
-      "sha256": "f50f7c1507a13ceaa953d2d96a47393e2d0548eb666aab3aa16a1f1c93eba555",
+      "sha256": "a3152c79d405839a428620708bf90697348b9880538c36c5c0b2b014c90efee7",
       "cases": [
         "BootstrapTests.test_existing_or_uninspectable_protection_is_never_overwritten",
         "BootstrapTests.test_initialization_changes_identity_and_removes_inherited_approvals_only",
@@ -92,7 +92,10 @@
         "OutcomeTests.test_recording_runner_preserves_actual_failure_and_skip",
         "OutcomeTests.test_skips_failures_and_errors_are_counted_separately",
         "ProjectTests.test_argument_arrays_preserve_literal_shell_metacharacters",
+        "ProjectTests.test_deadline_failure_remains_failed_after_later_success",
+        "ProjectTests.test_existing_configured_names_survive_bounded_monitor_labels",
         "ProjectTests.test_nonzero_and_missing_commands_retain_failure_logs",
+        "ProjectTests.test_post_command_monitor_fault_invalidates_acceptance_outcome",
         "ProjectTests.test_rejects_invalid_command_and_identity_configurations",
         "ReleaseTests.test_existing_published_or_draft_release_is_never_overwritten",
         "ReleaseTests.test_failed_host_check_retains_raw_attempt_without_release_package",
@@ -105,6 +108,27 @@
         "ReleaseTests.test_resealed_wrong_archive_commit_is_rejected",
         "ReleaseTests.test_valid_package_binds_reports_counts_sources_and_assets",
         "ReleaseTests.test_wrong_tag_dirty_source_and_stale_reviews_refuse_build"
+      ]
+    },
+    "tools/tests/test_run_monitor.py": {
+      "sha256": "ad9718bd3b0d3955a9db2b5cce316ffefc008d7cdd446ac2ebf9c1fe5bf98b92",
+      "cases": [
+        "MonitorTests.test_both_observers_distinguish_unknown_from_observed_failure",
+        "MonitorTests.test_capture_failure_stops_command_and_refuses_success",
+        "MonitorTests.test_cli_refuses_success_for_post_command_monitor_fault",
+        "MonitorTests.test_event_limit_keeps_final_failure_snapshot",
+        "MonitorTests.test_extraction_failure_keeps_complete_raw_bytes_and_fails",
+        "MonitorTests.test_final_event_limit_cannot_seal_a_completed_run",
+        "MonitorTests.test_invalid_budgets_and_labels_do_not_launch",
+        "MonitorTests.test_nonzero_launch_failure_and_output_limit_never_pass",
+        "MonitorTests.test_owned_descendant_is_stopped_when_leader_exits",
+        "MonitorTests.test_progress_adapter_handles_split_lines_and_unknown_totals",
+        "MonitorTests.test_scheduling_delay_before_ownership_cannot_leave_live_descendant",
+        "MonitorTests.test_slow_extraction_does_not_delay_child_deadline",
+        "MonitorTests.test_status_is_unknown_for_missing_invalid_or_stale_supervisor",
+        "MonitorTests.test_streams_bytes_before_exit_with_readonly_observation_and_quiet_warning",
+        "MonitorTests.test_timeout_and_cancellation_preserve_both_partial_streams",
+        "MonitorTests.test_viewer_interrupt_detaches_without_control_action"
       ]
     }
   },
@@ -164,7 +188,10 @@
       "tools/tests/test_pipeline.py::OutcomeTests.test_recording_runner_preserves_actual_failure_and_skip",
       "tools/tests/test_pipeline.py::OutcomeTests.test_skips_failures_and_errors_are_counted_separately",
       "tools/tests/test_pipeline.py::ProjectTests.test_argument_arrays_preserve_literal_shell_metacharacters",
+      "tools/tests/test_pipeline.py::ProjectTests.test_deadline_failure_remains_failed_after_later_success",
+      "tools/tests/test_pipeline.py::ProjectTests.test_existing_configured_names_survive_bounded_monitor_labels",
       "tools/tests/test_pipeline.py::ProjectTests.test_nonzero_and_missing_commands_retain_failure_logs",
+      "tools/tests/test_pipeline.py::ProjectTests.test_post_command_monitor_fault_invalidates_acceptance_outcome",
       "tools/tests/test_pipeline.py::ProjectTests.test_rejects_invalid_command_and_identity_configurations"
     ],
     "WF-RELEASE-001": [
@@ -213,6 +240,31 @@
       "tools/tests/test_graph_workflow.py::UIReferenceTests.test_latest_reference_rejects_source_and_image_changes",
       "tools/tests/test_graph_workflow.py::UIReferenceTests.test_missing_states_approval_and_unsafe_images_are_rejected",
       "tools/tests/test_graph_workflow.py::UIReferenceTests.test_no_ui_requires_explicit_empty_scope_and_reason"
+    ],
+    "WF-PRACTICE-001": [],
+    "WF-MONITOR-001": [
+      "tools/tests/test_pipeline.py::ProjectTests.test_argument_arrays_preserve_literal_shell_metacharacters",
+      "tools/tests/test_pipeline.py::ProjectTests.test_deadline_failure_remains_failed_after_later_success",
+      "tools/tests/test_pipeline.py::ProjectTests.test_existing_configured_names_survive_bounded_monitor_labels",
+      "tools/tests/test_pipeline.py::ProjectTests.test_nonzero_and_missing_commands_retain_failure_logs",
+      "tools/tests/test_pipeline.py::ProjectTests.test_post_command_monitor_fault_invalidates_acceptance_outcome",
+      "tools/tests/test_pipeline.py::ProjectTests.test_rejects_invalid_command_and_identity_configurations",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_both_observers_distinguish_unknown_from_observed_failure",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_capture_failure_stops_command_and_refuses_success",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_cli_refuses_success_for_post_command_monitor_fault",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_event_limit_keeps_final_failure_snapshot",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_extraction_failure_keeps_complete_raw_bytes_and_fails",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_final_event_limit_cannot_seal_a_completed_run",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_invalid_budgets_and_labels_do_not_launch",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_nonzero_launch_failure_and_output_limit_never_pass",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_owned_descendant_is_stopped_when_leader_exits",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_progress_adapter_handles_split_lines_and_unknown_totals",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_scheduling_delay_before_ownership_cannot_leave_live_descendant",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_slow_extraction_does_not_delay_child_deadline",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_status_is_unknown_for_missing_invalid_or_stale_supervisor",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_streams_bytes_before_exit_with_readonly_observation_and_quiet_warning",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_timeout_and_cancellation_preserve_both_partial_streams",
+      "tools/tests/test_run_monitor.py::MonitorTests.test_viewer_interrupt_detaches_without_control_action"
     ]
   }
 }

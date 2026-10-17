@@ -4,6 +4,8 @@ Use the graph-first skill for coding and review: consult current CRG before broa
 searches/edits; preserve diagnosed fallback. Graphify refreshes only at release.
 Read SPEC.md, docs/DESIGN.md, docs/ARCHITECTURE.md and CONTRIBUTING.md.
 Use `.agents/skills/project-change/SKILL.md` for project changes.
+Follow `docs/CODING_PRACTICE.md` for test stages, rerun decisions, evidence reuse
+and candidate freezing; retain all required checks and two fresh final approvals.
 
 1. Work on a feature/chore branch. Update SPEC.md first and the owning Spec Kit-style
    feature contract; reconcile stable WF-* requirements, acceptance and gaps.

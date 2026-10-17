@@ -29,6 +29,9 @@
     },
     "tools/tests/test_graph_workflow.py": {
       "entry": "tools/tests/test_graph_workflow.py"
+    },
+    "tools/tests/test_run_monitor.py": {
+      "entry": "tools/tests/test_run_monitor.py"
     }
   },
   "requirements": [
@@ -286,6 +289,37 @@
       ],
       "checks": [
         "tools/tests/test_graph_workflow.py::UIReferenceTests"
+      ]
+    },
+    {
+      "id": "WF-PRACTICE-001",
+      "criterion": "Dedicated coding practice documents targeted iteration, complete required candidate checks, conservative scenario selection, valid evidence reuse, safe parallel work, final candidate freeze, timing/rerun reasons and reusable template alignment without weakening fresh approvals.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-008",
+      "suites": [],
+      "dimensions": [
+        "state"
+      ],
+      "coverage": "manual",
+      "gap": "Documentation policy only; manual scenario walkthrough and link/coverage validation do not prove faster execution or agent compliance. Scenario selectors, CI deduplication/caching and timing instrumentation remain pending implementation. No runtime, device or visual behavior changed.",
+      "checks": []
+    },
+    {
+      "id": "WF-MONITOR-001",
+      "criterion": "Local bounded command supervision preserves live stdout/stderr, progress/status, explicit deadlines and failure/cancellation outcomes including post-command monitoring faults; independent observation never controls work or fabricates progress/success.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-009",
+      "suites": [
+        "tools/tests/test_run_monitor.py"
+      ],
+      "dimensions": [
+        "state"
+      ],
+      "coverage": "partial",
+      "gap": "Host fixtures target streaming before exit, byte preservation, Windows/POSIX owned-descendant cleanup, failures/limits, extraction faults, quiet/stale state and observer detachment. Actual platform execution is separate. No cloud/model telemetry, automatic retries or new per-scenario Android producer instrumentation. Device restoration uses mocked host fixtures until live verification.",
+      "checks": [
+        "tools/tests/test_run_monitor.py::MonitorTests",
+        "tools/tests/test_pipeline.py::ProjectTests"
       ]
     }
   ]

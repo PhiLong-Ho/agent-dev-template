@@ -1,12 +1,12 @@
 import copy
 import hashlib
 import json
-from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
 import zipfile
+from pathlib import Path
 from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -17,6 +17,7 @@ import project
 import quality
 import release
 import review_gate
+import run_monitor
 import run_tests
 
 
@@ -38,6 +39,11 @@ class ProjectTests(unittest.TestCase):
         bad["commands"][0]["argv"] = "shell command"
         with self.assertRaises(ValueError):
             project.validate(bad)
+        for value in (0, -1, float("inf"), float("nan"), True, "900"):
+            bad = copy.deepcopy(good)
+            bad["commands"][0]["timeout_seconds"] = value
+            with self.subTest(timeout=value), self.assertRaises(ValueError):
+                project.validate(bad)
 
     def test_argument_arrays_preserve_literal_shell_metacharacters(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -60,6 +66,63 @@ class ProjectTests(unittest.TestCase):
             results = project.execute(root, commands, root / "logs")
             self.assertEqual([4, 127], [row["exit_code"] for row in results])
             self.assertTrue((root / "logs/missing.log").exists())
+
+    def test_deadline_failure_remains_failed_after_later_success(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            commands = [
+                {
+                    "name": "slow",
+                    "argv": ["{python}", "-c", "import time;time.sleep(30)"],
+                    "timeout_seconds": 0.3,
+                },
+                {"name": "after", "argv": ["{python}", "-c", "print('done')"]},
+            ]
+            results = project.execute(root, commands, root / "logs")
+            self.assertEqual([124, 0], [r["exit_code"] for r in results])
+            self.assertEqual("timeout", results[0]["state"])
+            state = run_monitor.read_status(root / "logs/monitor")
+            self.assertEqual("failed", state["state"])
+            self.assertEqual(1, state["failed_commands"])
+            self.assertEqual("slow", state["last_failure"]["label"])
+
+    def test_existing_configured_names_survive_bounded_monitor_labels(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            for index, name in enumerate(("-lint", "x" * 81)):
+                with self.subTest(name=name):
+                    command = {"name": name, "argv": ["{python}", "-c", "print('done')"]}
+                    config = project.load()
+                    config["commands"] = [command]
+                    project.validate(config)
+                    logs = root / str(index)
+                    results = project.execute(root, [command], logs)
+                    self.assertEqual(0, results[0]["exit_code"])
+                    self.assertEqual(name, results[0]["name"])
+                    self.assertEqual(b"done", (logs / (name + ".log")).read_bytes().strip())
+                    self.assertEqual(
+                        "completed", run_monitor.read_status(logs / "monitor")["state"]
+                    )
+
+    def test_post_command_monitor_fault_invalidates_acceptance_outcome(self):
+        original = run_monitor.Session.run
+
+        def run(session, *args, **kwargs):
+            result = original(session, *args, **kwargs)
+            session.error = "status_write_failed"
+            return result
+
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            command = {"name": "last", "argv": ["{python}", "-c", "print('done')"]}
+            with mock.patch.object(run_monitor.Session, "run", run):
+                results = project.execute(root, [command], root / "logs")
+            self.assertEqual(74, results[0]["exit_code"])
+            self.assertEqual(0, results[0]["child_exit_code"])
+            self.assertEqual("failed", results[0]["state"])
+            self.assertEqual("status_write_failed", results[0]["monitor_error"])
+            self.assertEqual("failed", run_monitor.read_status(root / "logs/monitor")["state"])
+            self.assertEqual(b"done", (root / "logs/last.log").read_bytes().strip())
 
 
 class BootstrapTests(unittest.TestCase):

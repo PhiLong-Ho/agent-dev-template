@@ -7,3 +7,6 @@ Keep architecture/technical plans separate from observable product contracts.
 
 [Graph-first development](graph-first.md) owns client hooks, release graph snapshots
 and latest approved UI-reference behavior.
+
+[Local development monitoring](local-monitoring.md) owns live observation, deadlines,
+raw-stream preservation and an independent read-only status view.

@@ -1,5 +1,9 @@
 # Development workflow
 
+Use [coding practice](CODING_PRACTICE.md) for the focused daily loop: targeted
+iteration, complete candidate checks, evidence reuse, safe parallel work and one
+final candidate freeze. This page continues to own UI decisions and delivery.
+
 ```mermaid
 flowchart TD
     Request[Request and draft spec] --> UI{UI interaction changes?}

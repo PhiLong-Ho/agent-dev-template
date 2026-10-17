@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "candidate_sha256": "a030fe68f01b1a23f8b0cf4cf9bd222d8385f18642ace6acb0dc77da0883f65d",
+  "candidate_sha256": "c63ef80d72da511702530774298bef7a3033bb1bb7ac01ffd49afc404130408e",
   "reviews": [
     {
-      "agent_id": "/root/graph_final_review_g",
+      "agent_id": "/root/monitor_final_g",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T08:17:05Z",
-      "scope": "Independent complete staged candidate, requirements, hook routing and path semantics, CRG refresh/fallback/locking, installer preservation/privacy/native trust, release graph provenance/exclusions/checksums, UI reference gate, workflows and documentation. Ran host checks, validated all 112 archive members/current source binding, and inspected native routing evidence and rendered diagrams.",
-      "summary": "Explicitly approved exact digest with no blocking findings. Independent Windows verification: 76 passed and one explicit POSIX-only skip; lint, format, coverage, requirements, documentation and UI-reference checks passed. Ubuntu permissions await required CI. Native Claude callbacks, Codex edit/Stop callbacks, hosted release and product UI remain unverified."
+      "reviewed_at": "2026-10-17T10:31:35Z",
+      "scope": "Complete staged candidate, contracts/workflow, supervisor/CLI/adapters, quality/release integration, tests/coverage/docs and source-bound raw archives/diagram renders. Independently ran focused host tests and integrity/requirement/documentation checks.",
+      "summary": "Approved exact staged candidate, no blocking findings. Windows focused checks and retained full outcomes reconcile. POSIX/hosted CI, actual Android failure paths, broad device regression and resource overhead unverified; local-only evidence. Dex baseline unpublished app commits excluded."
     },
     {
-      "agent_id": "/root/graph_final_review_h",
+      "agent_id": "/root/monitor_final_h",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T08:16:45Z",
-      "scope": "Independent staged source, tests, requirements, workflows, installation/shell behavior, graph freshness/fallback/locking, release validation, UI reference gate and documentation, using current CRG query and impact. Ran full host checks, verified the 112-member archive and current source binding, and inspected native Codex evidence and both diagram renders against documentation.",
-      "summary": "Explicitly approved exact digest with no blocking findings. Host verification: 76 passed and one explicit POSIX-only skip; no unstaged candidate changes. Ubuntu permissions await required CI. Native Claude callbacks, Codex edit/Stop callbacks, hosted publication and product UI acceptance remain unverified."
+      "reviewed_at": "2026-10-17T10:32:02Z",
+      "scope": "Full staged workflow/spec/docs, shared supervisor, Android/configured-command adapters, failure finalization, tests, requirement coverage, source inventories, ZIPs and diagram renders. Independently ran focused host/coverage/docs/requirements checks.",
+      "summary": "Approved exact staged candidate, no blockers. Nonblocking Dex guide/README wording overgeneralizes attach-command availability: direct Gradle/tool runner needs explicit supervisor wrapping; follow-up clarification. Retained outcomes and current source/evidence reconcile. POSIX, actual Android failures, broader regression, overhead and hosted publication unverified. Dex unpublished baseline commits excluded."
     }
   ]
 }
