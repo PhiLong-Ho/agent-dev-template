@@ -65,3 +65,35 @@ Publication and history replacement remain pending; final approvals are recorded
 separately rather than predicted here. The cleanup local clone has zero original
 testresults object paths over all rewritten refs; only packaged application icons
 remain as historical PNGs. Four read-only PR refs require GitHub Support cleanup.
+
+## Verified archive publication guard, 2026-10-17
+
+The reusable release path already checked current-host files before sealing, but
+its later validate/export/publish path checked integrity without member privacy.
+WF-PRIVACY-001 now requires both boundaries. `check_privacy.public_member_errors`
+owns the existing path/signature policy; release validation inspects the verified
+manifest's relative paths and first 16 uncompressed bytes without extracting files.
+The general private-local archive tool remains governed by integrity checks.
+
+Architecture preflight `/root/release_archive_privacy/template_archive_preflight`
+approved this approach at `2026-10-17 14:06:58 UTC`, after inspecting current graph,
+contracts, source/tests and diagrams. No schema, product state, process, persistence
+or UI boundary changes. It required preservation of integrity/safe-name/link/empty
+checks and separate directory/member guards. No material departure was introduced.
+This is implementation preflight, not a release or final-candidate approval.
+
+Synthetic checks cover clean archives without extraction, contaminated source
+rejected before sealing, and validly rehashed capture/device-log/nested-archive
+members rejected before any GitHub call. Focused privacy tests: 9 total, 8 passed,
+1 Windows symlink-privilege skip; pipeline tests: 32 passed in 15.854 seconds.
+Requirements, generated coverage, documentation and targeted Ruff checks passed.
+The existing generic evidence round-trip retains synthetic media privately.
+
+Raw diagram sources/PNGs/logs and SHA-256 bindings are local-only at
+`testresults/0.1.0/runs/public-archive-privacy-diagrams-20261017/renders.json`; author inspected the five
+privacy/component/workflow renders against source. They are available to local
+reviewers, retained until owner cleanup, and have not been uploaded. Complete host
+verification passed: 106 cases passed, 2 platform skips, no failures/errors; the
+test command took 38.841 seconds. [Current local reviewer evidence](../../testresults/0.1.0/public-archive-privacy/summary.md)
+records verified external archives, source binding and remaining gaps before final reviews.
+No device, product UI, performance or semantic private-text detection is claimed.

@@ -259,6 +259,14 @@ def validate(root, output):
     if (output / REPORTS[0]).read_text(encoding="utf-8") != render_report(report):
         raise ValueError("Markdown report differs from structured report")
     with zipfile.ZipFile(output / EVIDENCE[0]) as bundle:
+        for record in manifest["files"]:
+            name = record["path"]
+            with bundle.open("data/" + name) as stream:
+                errors = check_privacy.public_member_errors(
+                    name, stream.read(check_privacy.PUBLIC_PREFIX_BYTES)
+                )
+            if errors:
+                raise ValueError("Public release evidence rejected: " + "; ".join(errors))
         for name in REPORTS:
             if bundle.read("data/" + name) != (output / name).read_bytes():
                 raise ValueError("Archived report mismatch")

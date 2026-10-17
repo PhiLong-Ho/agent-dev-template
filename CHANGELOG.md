@@ -7,6 +7,8 @@
 
 - Block raw device evidence from Git/public host uploads; document private capture
   and explicit privacy withdrawal. CI publishes only its guarded current run.
+- Reject forbidden members and capture/archive signatures in integrity-valid release
+  evidence before export or publication, using the same bounded guard as packaging.
 
 
 - Source-linked component and feature overview/sequence atlas; architecture-impact

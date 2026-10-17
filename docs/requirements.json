@@ -340,7 +340,7 @@
     },
     {
       "id": "WF-PRIVACY-001",
-      "criterion": "Raw personal/device evidence is rejected from tracked paths and public-host input; private local capture remains allowed. Publication scope is current host run only; explicit withdrawal does not certify missing evidence.",
+      "criterion": "Raw personal/device evidence is rejected from tracked paths and public-host input; private local capture remains allowed. Publication scope is current host run only; explicit withdrawal does not certify missing evidence. Release packaging checks uncompressed current-host input before sealing; verify/export/publication reject forbidden archive member paths and capture/archive signatures even with valid integrity hashes, without extracting members or calling GitHub.",
       "spec_section": "Nonfunctional Requirements",
       "spec_requirement": "NFR-011",
       "coverage": "partial",
@@ -350,10 +350,14 @@
         "platform"
       ],
       "suites": [
-        "tools/tests/test_privacy.py"
+        "tools/tests/test_privacy.py",
+        "tools/tests/test_pipeline.py"
       ],
       "checks": [
-        "tools/tests/test_privacy.py::PrivacyTests"
+        "tools/tests/test_privacy.py::PrivacyTests",
+        "tools/tests/test_pipeline.py::ReleaseTests.test_clean_archive_privacy_validation_needs_no_extraction",
+        "tools/tests/test_pipeline.py::ReleaseTests.test_contaminated_host_source_is_rejected_before_sealing",
+        "tools/tests/test_pipeline.py::ReleaseTests.test_integrity_valid_private_archive_is_rejected_before_github_calls"
       ]
     }
   ]

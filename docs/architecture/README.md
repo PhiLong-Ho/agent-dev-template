@@ -19,7 +19,8 @@ flowchart TB
     Supervisor --> Children[Configured child commands and run_tests.py]
     Children --> Raw[Current outcomes and raw streams]
     Supervisor --> Observer[Independent status viewer]
-    Raw --> Evidence[evidence.py archive and verification]
+    Raw --> Guard[check_privacy.py current-host guard]
+    Guard --> Evidence[evidence.py archive and verification]
     Human --> Reviews[Actual independent agent reviews]
     Reviews --> Gate[review_gate.py candidate attestation]
     Gate --> CI[Protected PR host checks]
@@ -28,7 +29,8 @@ flowchart TB
     Release --> Build[Configured build adapters]
     Release --> Graph[graph_release.py curated release snapshot]
     Release --> Assets[Validated artifact, report, ZIP and checksums]
-    Assets --> GitHub[Explicit publication through GitHub CLI]
+    Assets --> MemberGuard[Shared privacy guard on verified archive members]
+    MemberGuard --> GitHub[Explicit publication through GitHub CLI]
 ```
 
 The agent session makes design/review decisions. Local tools and Actions run
@@ -44,6 +46,7 @@ installation and GitHub protection are explicit external boundaries.
 | [run_monitor.py](../../tools/run_monitor.py) | Owned child process trees, raw streams, bounded status and independent viewer |
 | [coverage.py](../../tools/coverage.py), [check_requirements.py](../../tools/check_requirements.py), [check_docs.py](../../tools/check_docs.py) | Mapping/fingerprint freshness and document integrity, not semantic review |
 | [evidence.py](../../tools/evidence.py) | Immutable safe ZIP/member integrity; packaging does not imply upload |
+| [check_privacy.py](../../tools/check_privacy.py) | Shared bounded path/signature policy for current-host input and verified public archive members |
 | [review_gate.py](../../tools/review_gate.py) | Canonical candidate digest excluding only approval record; validates two attestations |
 | [release.py](../../tools/release.py) and [package_example.py](../../tools/package_example.py) | Current gates/build/report/graph/evidence checks, explicit publication; replaceable build adapter |
 | [bootstrap.py](../../tools/bootstrap.py) | Explicit identity setup and authorized protection API operations |

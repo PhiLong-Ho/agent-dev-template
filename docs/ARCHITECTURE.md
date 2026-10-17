@@ -97,3 +97,5 @@ See [monitoring](LOCAL_MONITORING.md) for deadlines, limits and verified scope.
 [Privacy policy and flow](PRIVACY.md) separates private device capture from public
 host evidence. `check_privacy.py` guards indexed raw paths and actual host inputs
 before upload; failure withholds the artifact. Integrity packaging remains separate.
+Release validation applies the same policy to verified archive members before
+export/publication, without extracting them. Hash validity alone permits no upload.

@@ -6,20 +6,25 @@
 
 Source owners: [bootstrap](../../../tools/bootstrap.py), [quality](../../../tools/quality.py), [review gate](../../../tools/review_gate.py), [evidence](../../../tools/evidence.py) and [release](../../../tools/release.py). This page describes current source and intended
 contracts; adopting projects must verify their own adapters and product behavior.
+The shared [privacy policy owner](../../../tools/check_privacy.py) guards current-host
+files before sealing and verified uncompressed archive members before delivery.
 
 ## Component overview
 
 ```mermaid
-flowchart LR
+flowchart TB
     Setup[Explicit bootstrap and stack config] --> Contract[Specs and expert decisions]
     Contract --> Quality[Configured quality and test adapters]
-    Quality --> Archive[Verified current evidence]
+    Quality --> Privacy[Current-host directory privacy guard]
+    Privacy --> Archive[Verified current evidence]
     Archive --> RC{New version?}
     RC -->|Yes| AR[Fresh architecture approval and attestation]
     RC -->|No| Review[Two fresh final code reviews]
     AR --> Review
     Review --> PR[Protected PR and CI]
     PR --> Release[Authorized validated release package]
+    Release --> Members[Verified archive-member privacy guard]
+    Members --> Delivery[Export or publish]
 ```
 
 ## Representative sequence
@@ -52,7 +57,13 @@ sequenceDiagram
                 A->>G: Authorized protected PR and required host check
                 opt Authorized release
                     A->>G: Authorized merged-main release steps
-                    G->>G: Validate current package and reports before publish
+                    G->>T: Validate current package and archive integrity
+                    T->>T: Check verified member paths and uncompressed prefixes
+                    alt Member privacy passes
+                        T-->>G: Permit export and publication
+                    else Forbidden member or signature
+                        T-->>G: Fail and withhold delivery
+                    end
                 end
             else Rejected or changed candidate
                 A->>A: Resolve, reverify and renew affected reviews

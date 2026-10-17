@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "cb807d24fb2fcdd981df7a637957564cd08f6e6dda2180f69382971dd04f3cc4",
+  "archive_bytes": 478296,
+  "file_count": 16,
+  "raw_bytes": 513952,
+  "created_utc": "2026-10-17T14:10:26.282287+00:00",
+  "context": {
+    "scope": "Five source-bound privacy/component/workflow Mermaid diagrams, rendered and author-inspected for archive privacy integration. Synthetic documentation diagrams only; local reviewer access, no product UI or remote upload.",
+    "packaging_commit": "083daa9da7cb7c4d0100f1f1d7941b2e740932a2",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\evidence-archives\\agent-dev-template\\0.1.0\\public-archive-privacy-20261017-diagrams\\evidence.zip"
+  }
+}

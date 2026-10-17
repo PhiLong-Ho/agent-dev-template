@@ -77,7 +77,7 @@
       ]
     },
     "tools/tests/test_pipeline.py": {
-      "sha256": "a3152c79d405839a428620708bf90697348b9880538c36c5c0b2b014c90efee7",
+      "sha256": "e425ea91f25c58e7e0d53ff55926746e5e3651228e4f59212684f72f72b80375",
       "cases": [
         "BootstrapTests.test_existing_or_uninspectable_protection_is_never_overwritten",
         "BootstrapTests.test_initialization_changes_identity_and_removes_inherited_approvals_only",
@@ -97,10 +97,13 @@
         "ProjectTests.test_nonzero_and_missing_commands_retain_failure_logs",
         "ProjectTests.test_post_command_monitor_fault_invalidates_acceptance_outcome",
         "ProjectTests.test_rejects_invalid_command_and_identity_configurations",
+        "ReleaseTests.test_clean_archive_privacy_validation_needs_no_extraction",
+        "ReleaseTests.test_contaminated_host_source_is_rejected_before_sealing",
         "ReleaseTests.test_existing_published_or_draft_release_is_never_overwritten",
         "ReleaseTests.test_failed_host_check_retains_raw_attempt_without_release_package",
         "ReleaseTests.test_graph_assets_are_required_exported_and_validated_before_publish",
         "ReleaseTests.test_hidden_nonzip_artifact_survives_exact_export_and_import_validation",
+        "ReleaseTests.test_integrity_valid_private_archive_is_rejected_before_github_calls",
         "ReleaseTests.test_missing_empty_or_duplicate_changelog_notes_are_rejected",
         "ReleaseTests.test_missing_or_corrupt_evidence_refuses_before_remote_call",
         "ReleaseTests.test_resealed_raw_test_or_source_context_mismatch_is_rejected",
@@ -111,11 +114,12 @@
       ]
     },
     "tools/tests/test_privacy.py": {
-      "sha256": "cac267765f9d085dcfe9084f6adeaa781104ecca8ac91d6a817867a1eaecc368",
+      "sha256": "4e407fd50f380091fdfcd3360a8a1242943886d2afc8e2e2dbb40a6b180cbe8f",
       "cases": [
         "PrivacyTests.test_current_host_reports_pass_without_uploading_other_runs",
         "PrivacyTests.test_empty_and_linked_public_inputs_fail",
         "PrivacyTests.test_public_host_rejects_media_nested_archives_and_device_metadata",
+        "PrivacyTests.test_public_member_guard_handles_posix_names_and_uncompressed_signatures",
         "PrivacyTests.test_raw_screenshots_logs_and_metadata_cannot_be_tracked",
         "PrivacyTests.test_renamed_capture_is_rejected_by_signature",
         "PrivacyTests.test_repository_guard_checks_new_index_paths_and_ignored_local_capture",
@@ -208,10 +212,13 @@
       "tools/tests/test_pipeline.py::ProjectTests.test_rejects_invalid_command_and_identity_configurations"
     ],
     "WF-RELEASE-001": [
+      "tools/tests/test_pipeline.py::ReleaseTests.test_clean_archive_privacy_validation_needs_no_extraction",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_contaminated_host_source_is_rejected_before_sealing",
       "tools/tests/test_pipeline.py::ReleaseTests.test_existing_published_or_draft_release_is_never_overwritten",
       "tools/tests/test_pipeline.py::ReleaseTests.test_failed_host_check_retains_raw_attempt_without_release_package",
       "tools/tests/test_pipeline.py::ReleaseTests.test_graph_assets_are_required_exported_and_validated_before_publish",
       "tools/tests/test_pipeline.py::ReleaseTests.test_hidden_nonzip_artifact_survives_exact_export_and_import_validation",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_integrity_valid_private_archive_is_rejected_before_github_calls",
       "tools/tests/test_pipeline.py::ReleaseTests.test_missing_empty_or_duplicate_changelog_notes_are_rejected",
       "tools/tests/test_pipeline.py::ReleaseTests.test_missing_or_corrupt_evidence_refuses_before_remote_call",
       "tools/tests/test_pipeline.py::ReleaseTests.test_resealed_raw_test_or_source_context_mismatch_is_rejected",
@@ -281,9 +288,13 @@
     ],
     "WF-ARCH-001": [],
     "WF-PRIVACY-001": [
+      "tools/tests/test_pipeline.py::ReleaseTests.test_clean_archive_privacy_validation_needs_no_extraction",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_contaminated_host_source_is_rejected_before_sealing",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_integrity_valid_private_archive_is_rejected_before_github_calls",
       "tools/tests/test_privacy.py::PrivacyTests.test_current_host_reports_pass_without_uploading_other_runs",
       "tools/tests/test_privacy.py::PrivacyTests.test_empty_and_linked_public_inputs_fail",
       "tools/tests/test_privacy.py::PrivacyTests.test_public_host_rejects_media_nested_archives_and_device_metadata",
+      "tools/tests/test_privacy.py::PrivacyTests.test_public_member_guard_handles_posix_names_and_uncompressed_signatures",
       "tools/tests/test_privacy.py::PrivacyTests.test_raw_screenshots_logs_and_metadata_cannot_be_tracked",
       "tools/tests/test_privacy.py::PrivacyTests.test_renamed_capture_is_rejected_by_signature",
       "tools/tests/test_privacy.py::PrivacyTests.test_repository_guard_checks_new_index_paths_and_ignored_local_capture",

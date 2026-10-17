@@ -401,7 +401,7 @@ class ReleaseTests(unittest.TestCase):
     def git(self, *args):
         return project.git(self.root, *args)
 
-    def package(self, artifact="example-0.1.0.zip"):
+    def package(self, artifact="example-0.1.0.zip", private_member=None):
         def host(root, folder):
             folder.mkdir(parents=True)
             state = project.source_state(root)
@@ -424,6 +424,11 @@ class ReleaseTests(unittest.TestCase):
                 "scope": "Synthetic fixture only",
             }
             project.write_json(folder / "host-results.json", result)
+            if private_member:
+                name, data = private_member
+                path = folder / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(data)
             return result
 
         def build(root, commands, folder, **values):
@@ -471,10 +476,76 @@ class ReleaseTests(unittest.TestCase):
             archive_sha256=evidence.digest_file(archive),
             archive_bytes=archive.stat().st_size,
             context=manifest["context"],
+            file_count=len(manifest["files"]),
             raw_bytes=sum(record["bytes"] for record in manifest["files"]),
         )
         project.write_json(self.output / "release-evidence.json", descriptor)
         self.reseal()
+
+    def test_clean_archive_privacy_validation_needs_no_extraction(self):
+        self.package()
+        with (
+            mock.patch.object(zipfile.ZipFile, "extract") as extract,
+            mock.patch.object(zipfile.ZipFile, "extractall") as extractall,
+        ):
+            release.validate(self.root, self.output)
+        extract.assert_not_called()
+        extractall.assert_not_called()
+
+    def test_contaminated_host_source_is_rejected_before_sealing(self):
+        for index, member in enumerate(
+            [
+                ("host/capture.png", b"synthetic image"),
+                ("host/logcat.txt", b"synthetic device log"),
+                ("host/nested.zip", b"synthetic archive"),
+                ("host/renamed.txt", b"\x89PNG\r\n\x1a\nsynthetic image"),
+            ]
+        ):
+            self.output = self.root / f"artifacts/private-source-{index}"
+            with (
+                self.subTest(name=member[0]),
+                mock.patch.object(release.evidence, "create_archive") as seal,
+            ):
+                with self.assertRaisesRegex(ValueError, "rejected"):
+                    self.package(private_member=member)
+                seal.assert_not_called()
+                self.assertFalse((self.output / "package.json").exists())
+                self.assertFalse((self.output / "release-evidence.zip").exists())
+
+    def test_integrity_valid_private_archive_is_rejected_before_github_calls(self):
+        self.package()
+        archive = self.output / "release-evidence.zip"
+        descriptor_path = self.output / "release-evidence.json"
+        original_archive = archive.read_bytes()
+        original_descriptor = descriptor_path.read_bytes()
+        config = project.load(self.root)
+        state = project.read_json(self.output / "package.json")["source"]
+        for name, data in [
+            ("host/capture.png", b"synthetic image"),
+            ("host/logcat.txt", b"synthetic device log"),
+            ("host/nested.zip", b"synthetic archive"),
+            ("host/renamed.txt", b"\x89PNG\r\n\x1a\nsynthetic image"),
+            ("host/renamed.txt", b"PK\x03\x04synthetic archive"),
+        ]:
+            with self.subTest(name=name, data=data):
+                archive.write_bytes(original_archive)
+                descriptor_path.write_bytes(original_descriptor)
+
+                def contaminate(files, manifest):
+                    files["data/" + name] = data
+                    manifest["files"].append({"path": name})
+
+                self.rewrite_archive(contaminate)
+                evidence.verify_archive(archive, project.read_json(descriptor_path))
+                with (
+                    mock.patch.object(release, "context", return_value=(config, state)),
+                    mock.patch.object(release.subprocess, "run") as remote,
+                    mock.patch.object(zipfile.ZipFile, "extractall") as extractall,
+                ):
+                    with self.assertRaisesRegex(ValueError, "Public release evidence rejected"):
+                        release.publish(self.root, self.output)
+                    remote.assert_not_called()
+                    extractall.assert_not_called()
 
     def test_graph_assets_are_required_exported_and_validated_before_publish(self):
         config = project.load(self.root)
