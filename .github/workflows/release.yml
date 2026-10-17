@@ -50,8 +50,15 @@ jobs:
           include-hidden-files: true
           retention-days: 14
           if-no-files-found: error
-      - name: Bundle only current release attempt
+      - name: Check current public host attempt
+        id: public_evidence
         if: always()
+        run: |
+          mkdir -p artifacts/release/raw
+          git rev-parse HEAD > artifacts/release/raw/ci-source-commit.txt
+          python tools/check_privacy.py --evidence artifacts/release/raw
+      - name: Bundle only current release attempt
+        if: always() && steps.public_evidence.outcome == 'success'
         run: |
           mkdir -p artifacts/release/raw
           git rev-parse HEAD > artifacts/release/raw/ci-source-commit.txt
@@ -59,7 +66,7 @@ jobs:
             --scope "Current release host attempt; inspect outcomes. No device/visual/performance certification." \
             --workflow-url "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.public_evidence.outcome == 'success'
         with:
           name: release-attempt-evidence
           path: artifacts/release-attempt/

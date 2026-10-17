@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import zipfile
 
+import check_privacy
 import evidence
 import graph_release
 from graph_common import inventory
@@ -137,6 +138,9 @@ def build(root, output, tag, workflow_url):
         "repository": config["repository"],
         "workflow_url": workflow_url,
     }
+    privacy_errors = check_privacy.public_errors(raw)
+    if privacy_errors:
+        raise ValueError("\n".join(privacy_errors))
     descriptor = evidence.create_archive(raw, output / "archive", archive_context)
     shutil.copyfile(output / "archive/evidence.zip", output / EVIDENCE[0])
     descriptor.update(

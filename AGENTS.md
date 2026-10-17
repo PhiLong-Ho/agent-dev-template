@@ -65,3 +65,12 @@ and re-review material departures. This role does not replace UI or final review
 Flag missing requirement coverage, divergent surface behavior/style, UI-thread
 blocking, unbounded work/input queues, stale lifecycle identities, swallowed
 failures, unsafe rollback and unsupported visual/performance/pass claims.
+
+## Evidence privacy
+
+Read docs/PRIVACY.md. Personal app/device captures and dumps stay private local;
+testing does not authorize publication. Use synthetic fixtures for routine tests.
+Run tools/check_privacy.py; public host input must pass its --evidence guard before
+packaging/upload. Never restore withdrawn private evidence or merge tainted history.
+Privacy cleanup overrides historical raw-evidence retention, not integrity checks
+for retained records. History/protection exceptions require explicit user approval.

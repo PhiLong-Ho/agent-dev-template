@@ -34,3 +34,9 @@ authorized scope; do not silently include unrelated content or rewrite originals
 The only intentional screenshot assets in Git are small current approved
 [master UI references](ui-reference/README.md). Historical/test captures stay in
 archives. Master assets and all raw evidence are excluded from graph inputs.
+
+## Privacy overrides retention
+
+Follow [private evidence policy](PRIVACY.md). Historical retention does not authorize
+public disclosure of app/device data. Withdrawn evidence is unavailable; keep
+remaining hashes strict. Only reviewed synthetic UI references may be public.

@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+- Block raw device evidence from Git/public host uploads; document private capture
+  and explicit privacy withdrawal. CI publishes only its guarded current run.
+
+
 - Source-linked component and feature overview/sequence atlas; architecture-impact
   screening and expert preflight before architectural changes, shared with the template.
 
