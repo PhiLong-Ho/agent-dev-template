@@ -193,7 +193,7 @@
     },
     {
       "id": "WF-DOC-001",
-      "criterion": "Concise README, separate changelog, onboarding, shared design/architecture and feature diagrams retain valid links and explicit verification limits.",
+      "criterion": "Concise README, separate changelog, onboarding, shared design/architecture and feature diagrams retain valid links and explicit verification limits. Filesystem aliases normalize consistently so Windows short/long paths report link findings without crashing.",
       "spec_section": "Nonfunctional Requirements",
       "spec_requirement": "NFR-007",
       "coverage": "partial",

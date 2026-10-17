@@ -23,6 +23,10 @@ def check_links(root, files):
     errors = []
     root = root.resolve()
     for path in files:
+        path = path.resolve()
+        if not path.is_relative_to(root):
+            errors.append(f"Documentation file is outside repository: {path}")
+            continue
         if not path.is_file():
             errors.append(f"Missing documentation file: {path}")
             continue
