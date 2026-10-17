@@ -167,7 +167,28 @@ Release fixtures must index current code/documents and reject excluded inputs.
   short/long path forms MUST return link findings rather than crash validation.
   Mark device/E2E/visual/performance gaps; never silently bless screenshot baselines.
 
+- **NFR-008**: Coding work MUST follow a dedicated practice guide with affected
+  requirements, conservative test selection, targeted iteration, complete required
+  candidate checks and a freeze covering source/tests/docs/coverage/evidence before
+  two fresh independent reviews. Reuse only valid source/configuration-bound
+  evidence, without implying new execution or retaining approvals after content
+  changes. Record available durations and rerun reasons; identify pending automation
+  and keep reusable practice aligned with adopting projects. (WF-PRACTICE-001)
+
+- **NFR-009**: Configured local commands MUST stream byte-preserving stdout/stderr,
+  bounded structured events and current status to an independent read-only viewer.
+  Distinguish heartbeat/output/progress, quiet warnings, deadlines and final results.
+  Enforce configurable finite deadlines, bounded owned-process cleanup, and failure
+  on capture errors/output limits. Observation MUST NOT start, cancel or retry work;
+  stale/missing state remains unknown. Preserve partial failure evidence, represent
+  unknown totals honestly, and require no cloud service/model calls/raw prompts.
+  Final monitoring faults, including after the last command, MUST prevent a passing
+  host/build result and exit code while retaining the child's actual exit code.
+  Monitoring MUST preserve previously valid configured command names.
+  (WF-MONITOR-001)
+
 ### Key Entities
+
 
 - **Project configuration**: replaceable argument-array gates/build commands and artifacts.
 - **Requirement mapping**: stable criterion, concrete checks, dimensions and explicit gaps.

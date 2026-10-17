@@ -20,8 +20,9 @@ Follow [onboarding](docs/ONBOARDING.md) to adapt the stack, obtain fresh reviews
 open a PR and activate branch protection. Repository settings/secrets and global
 agent configuration are not copied. AI reviews run in your agent session; CI
 validates their recorded candidate approvals, not reviewer identity.
+Long runs print an attach command for the [local status viewer](docs/LOCAL_MONITORING.md).
 
-[Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) ·
+[Coding practice](docs/CODING_PRACTICE.md) · [Workflow](docs/WORKFLOW.md) · [Architecture](docs/ARCHITECTURE.md) ·
 [Design](docs/DESIGN.md) · [Coverage](docs/coverage.md) ·
 [Release guide](docs/RELEASING.md) · [Changelog](CHANGELOG.md)
 

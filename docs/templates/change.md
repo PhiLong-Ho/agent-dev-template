@@ -3,6 +3,7 @@
 ## Contract before implementation
 
 Requirements/criteria, owning spec, affected surfaces/states, exclusions and risks.
+Test plan: focused iteration checks, completed-candidate gates and exclusions.
 
 ## UI preflight
 
@@ -17,6 +18,9 @@ Ownership/shared state/style, changed diagrams and rendered review; actual comma
 source/tree, configuration, raw outcomes, acceptance/E2E scope and gaps. Distinguish
 rendered/golden approval from measurements. Record timing boundaries/samples and
 p50/p95 for performance. Never infer scenario passes from mapping/assertion totals.
+Record available command/suite/review/evidence durations and rerun reasons, reused
+evidence with source/test/configuration bindings and original execution, and reusable
+workflow alignment with adopting projects or explicit pending companion scope.
 
 ## Evidence and delivery
 

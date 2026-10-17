@@ -6,6 +6,10 @@ description: Implement or maintain this repository using spec-first contracts, r
 Use the sibling graph-first skill for coding and review. Refresh/consult CRG;
 Graphify is generated only at release, never per commit/turn.
 
+Use docs/CODING_PRACTICE.md for targeted iteration, complete candidate checks,
+source-bound evidence reuse, timings/rerun reasons and a freeze before final reviews.
+Keep reusable guidance aligned with adopting projects and platform details there.
+
 Read AGENTS.md, relevant SPEC/feature contract, docs/WORKFLOW.md, DESIGN.md,
 ARCHITECTURE.md and CONTRIBUTING.md. Honor the user's scope and prior decisions.
 Work on a feature/chore branch. Write observable spec/acceptance first; reconcile

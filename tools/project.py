@@ -7,6 +7,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import run_monitor
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -46,6 +48,11 @@ def validate(config):
                 or any(not isinstance(a, str) or not a for a in argv)
             ):
                 raise ValueError("Commands must be nonempty argument arrays")
+            for key, default in (("timeout_seconds", 900), ("idle_warning_seconds", 60)):
+                value = command.get(key, default)
+                if not isinstance(value, (int, float)):
+                    raise ValueError(f"{key} must be a number")
+                run_monitor.positive(value)
     for key, entries in (
         ("test_results", config.get("test_results")),
         ("artifacts", config["release"].get("artifacts")),
@@ -104,23 +111,61 @@ def source_state(root):
     }
 
 
-def execute(root, commands, folder, **values):
+def execute(root, commands, folder, *, monitor_context=None, **values):
     folder.mkdir(parents=True, exist_ok=True)
     values["python"] = sys.executable
     outcomes = []
-    for command in commands:
-        argv = command["argv"][:]
-        for key, value in values.items():
-            argv = [argument.replace("{" + key + "}", str(value)) for argument in argv]
-        try:
-            result = subprocess.run(
-                argv, cwd=root, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False
+    monitor = run_monitor.Session(
+        folder / "monitor",
+        context=monitor_context or {"scope": "configured commands; source binding not supplied"},
+    )
+    print(f'Monitor: python tools/run_monitor.py watch "{monitor.folder}"', flush=True)
+    try:
+        for command in commands:
+            argv = command["argv"][:]
+            for key, value in values.items():
+                argv = [argument.replace("{" + key + "}", str(value)) for argument in argv]
+            log = folder / (command["name"] + ".log")
+            result = monitor.run(
+                argv,
+                cwd=root,
+                label=(
+                    command["name"]
+                    if re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}", command["name"])
+                    else f"command-{len(outcomes) + 1}"
+                ),
+                timeout=command.get("timeout_seconds", 900),
+                idle_warning=command.get("idle_warning_seconds", 60),
+                combined_path=log,
+                extractor=run_monitor.AssertionProgress(),
             )
-            code, raw = result.returncode, result.stdout
-        except OSError as error:
-            code, raw = 127, str(error).encode("utf-8")
-        log = folder / (command["name"] + ".log")
-        log.write_bytes(raw)
-        outcomes.append({"name": command["name"], "argv": argv, "exit_code": code, "log": log.name})
-        print(f"{command['name']}: exit {code}", flush=True)
+            code = result.returncode
+            outcomes.append(
+                {
+                    "name": command["name"],
+                    "argv": argv,
+                    "exit_code": code,
+                    "log": log.name,
+                    "state": result.state,
+                    "duration_seconds": result.duration_seconds,
+                    "monitor_error": result.error,
+                }
+            )
+            print(f"{command['name']}: exit {code}", flush=True)
+            if result.state == "cancelled" or monitor.error:
+                break
+    except BaseException:
+        monitor.failed = True
+        raise
+    finally:
+        final = monitor.finish()
+    if outcomes and (
+        monitor.error or (final != "completed" and not any(row["exit_code"] for row in outcomes))
+    ):
+        # Host/release consumers use exit_code. Retain the actual child result
+        # while making a final monitor fault authoritative for acceptance.
+        last = outcomes[-1]
+        last["monitor_error"] = monitor.error or "monitor_finalization_failed"
+        if last["exit_code"] == 0:
+            last.update(child_exit_code=0, exit_code=74, state="failed")
     return outcomes

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "aead5bce0f32608d280ecf66c0e1d5f27735d0ad0e4ef0d72dd6f2e93598db6b",
+  "archive_bytes": 264329,
+  "file_count": 95,
+  "raw_bytes": 969993,
+  "created_utc": "2026-10-17T10:29:09.623677+00:00",
+  "context": {
+    "scope": "Current Windows candidate: 95 passing cases and one platform-only skip; host gates pass and unchanged before/after final-cli source fingerprints match current source. Earlier runs historical. POSIX and hosted CI pending.",
+    "packaging_commit": "cb4263e6b9dbe03f0303fc0372d63df85354644f",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\agent-dev-template\\.local\\monitor-evidence\\host-final-cli\\evidence.zip"
+  }
+}
