@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "candidate_sha256": "86ca4ba5311629104a088b0b3d57755bb8f6ef730d051491cf44dd51bd6ec777",
+  "reviews": [
+    {
+      "agent_id": "/root/template_review_e",
+      "fresh_agent": true,
+      "verdict": "approve",
+      "reviewed_at": "2026-10-17T07:16:44.261445+00:00",
+      "scope": "Independent full58-file staged bootstrap review: contracts/skills/requirements/coverage, source/tests/workflows/protection, adoption/onboarding/evidence/release;55-case host quality and validators; actual ZIP/member/source provenance;3 renders; release export/import/hidden transfer; skill tabletop.",
+      "summary": "Explicitly approved exact candidate without blockers. Current local claims match evidence. Ambiguous UI work waits for material user decisions; exact corrections avoid repeated approval. Live Ubuntu/Actions, remote protection/publication/retention, novice onboarding, other stack adapters and product device/UI/performance remain unverified; attestations do not authenticate reviewer identity."
+    },
+    {
+      "agent_id": "/root/template_review_f",
+      "fresh_agent": true,
+      "verdict": "approve",
+      "reviewed_at": "2026-10-17T07:16:51Z",
+      "scope": "Independent staged contracts/skills/requirements/coverage, application/tooling source/tests, configuration/hooks/workflows/onboarding/adoption/evidence/release;55-case host gates and archive/source verification;3 rendered diagrams; release export/hidden transfer/failure tests and policy tabletop.",
+      "summary": "Explicitly approved exact candidate with no blocking findings. Local outcomes/provenance and scope/gaps are accurate; hook executable mode confirmed. Adoption preserves existing settings and evidence availability is honest. Live hosted/platform/remote protection/publication/retention, novice onboarding and project-specific E2E/device/visual/performance remain unverified. No publication was performed during review."
+    }
+  ]
+}

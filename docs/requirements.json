@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "dimensions": {
+    "state": [
+      "success",
+      "failure",
+      "missing",
+      "stale",
+      "unverified"
+    ],
+    "platform": [
+      "Windows",
+      "Ubuntu",
+      "project-specific surfaces"
+    ]
+  },
+  "suites": {
+    "tests/test_example.py": {
+      "entry": "tests/test_example.py"
+    },
+    "tools/tests/test_pipeline.py": {
+      "entry": "tools/tests/test_pipeline.py"
+    },
+    "tools/tests/test_maintenance.py": {
+      "entry": "tools/tests/test_maintenance.py"
+    },
+    "tools/tests/test_evidence.py": {
+      "entry": "tools/tests/test_evidence.py"
+    }
+  },
+  "requirements": [
+    {
+      "id": "WF-EXAMPLE-001",
+      "criterion": "Trimmed nonempty Unicode names are greeted; blank input is rejected.",
+      "spec_section": "Functional Requirements",
+      "spec_requirement": "FR-001",
+      "coverage": "mapped",
+      "gap": "",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tests/test_example.py"
+      ],
+      "checks": [
+        "tests/test_example.py::GreetingAcceptance"
+      ]
+    },
+    {
+      "id": "WF-INIT-001",
+      "criterion": "Initialization validates identity, changes configuration and clears inherited approvals while preserving source; CI rejects a mismatched actual repository identity.",
+      "spec_section": "Functional Requirements",
+      "spec_requirement": "FR-002",
+      "coverage": "mapped",
+      "gap": "",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_pipeline.py"
+      ],
+      "checks": [
+        "tools/tests/test_pipeline.py::BootstrapTests.test_initialization_changes_identity_and_removes_inherited_approvals_only",
+        "tools/tests/test_pipeline.py::BootstrapTests.test_invalid_initialization_preserves_existing_files"
+      ]
+    },
+    {
+      "id": "WF-PROTECT-001",
+      "criterion": "Explicit authorized setup applies strict PR/host/admin protection, exposes inspection/API/incomplete-response failures and preserves existing rules for explicit reconciliation.",
+      "spec_section": "Functional Requirements",
+      "spec_requirement": "FR-003",
+      "coverage": "partial",
+      "gap": "Real hosted protection setup and account-plan differences need current API evidence.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_pipeline.py"
+      ],
+      "checks": [
+        "tools/tests/test_pipeline.py::BootstrapTests.test_remote_protection_errors_and_incomplete_response_fail",
+        "tools/tests/test_pipeline.py::BootstrapTests.test_protection_targets_configured_repo_and_requires_strict_response",
+        "tools/tests/test_pipeline.py::BootstrapTests.test_existing_or_uninspectable_protection_is_never_overwritten"
+      ]
+    },
+    {
+      "id": "WF-UI-001",
+      "criterion": "UI expert proposal precedes implementation; material ambiguity waits for user, exact authorized corrections proceed. Rendered acceptance is separate.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-001",
+      "coverage": "manual",
+      "gap": "Policy/tabletop review only. No product UI, visual baseline or measured latency is supplied.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [],
+      "checks": []
+    },
+    {
+      "id": "WF-COVERAGE-001",
+      "criterion": "Concrete case mappings, canonical test fingerprints, scenario dimensions and gaps stay fresh for test additions/edits/removals.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-002",
+      "coverage": "partial",
+      "gap": "Default inventory supports Python unittest. Other language/framework adapters require implementation and verification.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_maintenance.py"
+      ],
+      "checks": [
+        "tools/tests/test_maintenance.py::CoverageTests"
+      ]
+    },
+    {
+      "id": "WF-REVIEW-001",
+      "criterion": "Two distinct fresh-agent approvals bind to canonical staged/committed candidate and gate real pushes; changed content rejects.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-003",
+      "coverage": "partial",
+      "gap": "Records cannot authenticate identity/independence. Actual fresh reviews and hosted PR protection are separate evidence.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_maintenance.py"
+      ],
+      "checks": [
+        "tools/tests/test_maintenance.py::ReviewGateTests"
+      ]
+    },
+    {
+      "id": "WF-EVIDENCE-001",
+      "criterion": "Preserve bytes/originals and reject unsafe, corrupt, missing, unexpected, changed or overwritten archives. Availability and failed-run scope stay explicit.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-004",
+      "coverage": "partial",
+      "gap": "Live Actions retention/expiry/download and durable external availability are not proved by local archive tests.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_evidence.py"
+      ],
+      "checks": [
+        "tools/tests/test_evidence.py::EvidenceArchiveTests"
+      ]
+    },
+    {
+      "id": "WF-QUALITY-001",
+      "criterion": "Argument-array commands preserve literals/failure logs; missing/invalid/source-mismatched results fail and actual statuses remain separate.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-005",
+      "coverage": "partial",
+      "gap": "Configured reference stack only; product build/E2E/device adapters require explicit setup.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_pipeline.py"
+      ],
+      "checks": [
+        "tools/tests/test_pipeline.py::ProjectTests",
+        "tools/tests/test_pipeline.py::OutcomeTests"
+      ]
+    },
+    {
+      "id": "WF-RELEASE-001",
+      "criterion": "Current host counts, coverage/gaps, reports, artifacts and archive/source hashes bind before publish; stale reviews, mismatches and existing release refuse. Exact publication export/import preserves arbitrary configured extensions and dot-prefixed filenames without intermediate directories.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-006",
+      "coverage": "partial",
+      "gap": "Publication tests use synthetic local fixtures and mocked GitHub. Real Actions/release publication must be recorded separately.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_pipeline.py"
+      ],
+      "checks": [
+        "tools/tests/test_pipeline.py::ReleaseTests"
+      ]
+    },
+    {
+      "id": "WF-DOC-001",
+      "criterion": "Concise README, separate changelog, onboarding, shared design/architecture and feature diagrams retain valid links and explicit verification limits.",
+      "spec_section": "Nonfunctional Requirements",
+      "spec_requirement": "NFR-007",
+      "coverage": "partial",
+      "gap": "Rendered diagram inspection and novice onboarding are manual; no application visual/performance or device claim.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_pipeline.py"
+      ],
+      "checks": [
+        "tools/tests/test_pipeline.py::DocumentationTests"
+      ]
+    }
+  ]
+}

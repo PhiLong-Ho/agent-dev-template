@@ -1,0 +1,92 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing reviewed version tag
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.event_name == 'push' && github.ref_name || inputs.tag }}
+  cancel-in-progress: false
+env:
+  RELEASE_TAG: ${{ github.event_name == 'push' && github.ref_name || inputs.tag }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require reviewed contents on main
+        run: |
+          python tools/bootstrap.py check --repository "$GITHUB_REPOSITORY"
+          python tools/review_gate.py check --revision HEAD
+          git merge-base --is-ancestor HEAD origin/main
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Validate coverage and build current release
+        run: |
+          python tools/coverage.py check
+          python tools/release.py build --tag "$RELEASE_TAG" \
+            --workflow-url "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          cat artifacts/release/release-report.md >> "$GITHUB_STEP_SUMMARY"
+          python tools/release.py export --destination artifacts/release-package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-package
+          path: artifacts/release-package/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error
+      - name: Bundle only current release attempt
+        if: always()
+        run: |
+          mkdir -p artifacts/release/raw
+          git rev-parse HEAD > artifacts/release/raw/ci-source-commit.txt
+          python tools/evidence.py pack --source artifacts/release/raw --output artifacts/release-attempt \
+            --scope "Current release host attempt; inspect outcomes. No device/visual/performance certification." \
+            --workflow-url "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-attempt-evidence
+          path: artifacts/release-attempt/
+          retention-days: 14
+          if-no-files-found: error
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-package
+          path: artifacts/release/
+      - name: Publish verified current assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python tools/bootstrap.py check --repository "$GITHUB_REPOSITORY"
+          python tools/review_gate.py check --revision HEAD
+          git merge-base --is-ancestor HEAD origin/main
+          python tools/release.py publish

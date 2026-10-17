@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "agent-dev-template",
+  "repository": "PhiLong-Ho/agent-dev-template",
+  "version": "0.1.0",
+  "commands": [
+    {
+      "name": "lint",
+      "argv": [
+        "{python}",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ]
+    },
+    {
+      "name": "format",
+      "argv": [
+        "{python}",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ]
+    },
+    {
+      "name": "tests",
+      "argv": [
+        "{python}",
+        "tools/run_tests.py",
+        "--output",
+        "{evidence}/tests.json"
+      ]
+    }
+  ],
+  "test_results": [
+    "tests.json"
+  ],
+  "release": {
+    "build": [
+      {
+        "name": "package",
+        "argv": [
+          "{python}",
+          "tools/package_example.py",
+          "--output",
+          "{output}",
+          "--version",
+          "{version}"
+        ]
+      }
+    ],
+    "artifacts": [
+      "example-*.zip"
+    ]
+  }
+}

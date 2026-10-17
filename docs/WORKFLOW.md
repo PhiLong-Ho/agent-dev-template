@@ -1,0 +1,65 @@
+# Development workflow
+
+```mermaid
+flowchart TD
+    Request[Request and draft spec] --> UI{UI interaction changes?}
+    UI -->|Yes| Expert[Fresh UI expert proposal]
+    Expert --> Choice{Material ambiguity?}
+    Choice -->|Yes| User[User decision before dependent work]
+    Choice -->|No| Contract[Settled spec and acceptance]
+    User --> Contract
+    UI -->|No| Contract
+    Contract --> Code[Implement then update acceptance tests]
+    Code --> Check[Coverage, host and relevant E2E checks]
+    Check --> Evidence[Inspect renders, archive raw evidence]
+    Evidence --> Review[Two fresh independent final reviewers]
+    Review --> Both{Both approve exact candidate?}
+    Both -->|No or changed candidate| Contract
+    Both -->|Yes| Deliver[Commit and authorized PR or release]
+```
+
+Write the observable behavior in SPEC.md and its owning feature contract before
+code. Reconcile stable requirement IDs, scenarios and gaps. For UI work, invoke
+the [UI expert skill](../.agents/skills/ui-review/SKILL.md). Give the fresh read-only
+expert the request, current flow, spec/design, constraints and actual captures;
+label missing/historical captures. Review whole tasks: discovery, actions,
+preserved capabilities, navigation/recovery, loading/error/disabled feedback,
+keyboard/focus/accessibility, constrained bounds and all affected surfaces.
+
+Present a recommendation, before/after task steps, meaningful states/tradeoffs,
+and an annotated sketch when placement/navigation changes. Wait for material
+user decisions; clarify consequential uncertainty after expert review unless
+explicitly delegated. Exact specified corrections need only a brief proposal,
+not repeated approval. Silence/expert preference is not the user's decision.
+Continue independent work while dependent work waits. Record expert identity,
+scope, proposal, actual user answer or prior authorization and resulting criteria
+in the change record. Revisit material implementation departures.
+
+Implement shared behavior/state/style, then add or update behavior-focused tests.
+Every test-source edit reconciles concrete requirement checks and refreshes both
+coverage files. Render changed diagrams and inspect them against source. Run
+host gates and applicable integration/E2E/device checks sequentially where they
+share mutable targets. Fix causes; document exclusions without claiming a full
+Cartesian scenario matrix. Proposal approval, actual renders, golden acceptance
+and measured performance are separate evidence.
+
+Archive according to [evidence policy](EVIDENCE.md), then stage the complete tree.
+Create exactly two fresh final reviewers with no inherited history. They receive
+the candidate/spec/tests/raw evidence and review instructions independently, not
+the author's conclusions or each other's verdicts. Both must explicitly approve
+the same digest. Resolve blockers, reverify and get a NEW pair after any content
+change. Record identities/timestamps/scope and run [the gate](REVIEWS.md).
+
+Commit/push/merge/release only within user authorization and protected-main policy.
+The upstream UI expert cannot substitute for either final reviewer. If agents
+are unavailable, finish local work and report the missing gate; never synthesize
+approvals. GitHub CI checks attestations and deterministic gates; this repository
+does not provide an unauthenticated unattended AI service. Enable agents in your
+own supported environment. No API subscription, key or global configuration is
+installed. [OpenAI agent instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md),
+[skills](https://learn.chatgpt.com/docs/build-skills) and
+[subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) describe the
+Codex integration; equivalent independent agent tools can follow this protocol.
+
+Only create a Codex Goal when explicitly requested. Use a bounded objective,
+completion checks and the existing authorization scope; policy stays in Git.

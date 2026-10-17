@@ -1,0 +1,142 @@
+# Feature Specification: Agent development workflow template
+
+**Created**: 2026-10-17
+**Status**: Initial reusable contract; execution evidence is recorded separately.
+**Input**: Reuse the spec-driven development and release workflow in future projects.
+
+## User Scenarios & Testing
+
+### User Story 1 — Start a project (Priority: P1)
+
+Generate a repository, configure project commands and follow a concise onboarding
+route without carrying Android code, credentials or historical approvals.
+
+**Independent Test**: Initialize a temporary copy, run host checks and inspect the
+changed configuration. Apply protection to an authorized GitHub repository.
+
+**Acceptance Scenarios**:
+
+1. **Given** a fresh checkout, **When** host checks run, **Then** real reference
+   tests, formatting, lint, document links and requirement freshness are checked.
+2. **Given** a generated project, **When** initialized, **Then** its name/repository
+   change and inherited approvals are removed; new contents need fresh reviews.
+3. **Given** an authorized repository, **When** protection is applied, **Then** PRs,
+   an up-to-date `host` check, resolved conversations and administrator enforcement
+   are required, and force pushes/deletions remain disabled.
+
+### User Story 2 — Develop with traceable decisions (Priority: P1)
+
+Write a spec, resolve consequential design decisions, implement and verify the
+result before independent review. Preserve concise, inspectable evidence.
+
+**Independent Test**: Introduce unmapped/stale tests, alter an approved candidate,
+and corrupt archived evidence; gates must reject each case.
+
+**Acceptance Scenarios**:
+
+1. **Given** a UI change, **When** a material decision remains after expert review,
+   **Then** present the proposal and ask the user before dependent implementation.
+2. **Given** an exact authorized correction, **When** no material ambiguity emerges,
+   **Then** a brief expert proposal permits implementation without repeated approval.
+3. **Given** changed tests, **When** coverage has not been reconciled/refreshed,
+   **Then** validation fails; mapping never implies execution or visual approval.
+4. **Given** fewer than two fresh approvals or changed candidate contents,
+   **When** push/release checks run, **Then** publication is blocked.
+
+### User Story 3 — Publish inspectable releases (Priority: P1)
+
+Build a configured artifact and publish it with current test results, coverage,
+changelog notes and durable raw evidence, only after passing release gates.
+
+**Independent Test**: Build a local release fixture, inspect reports and alter
+source/result/artifact hashes; publication must refuse before remote mutations.
+
+**Acceptance Scenarios**:
+
+1. **Given** a matching version tag/changelog and passing current checks, **When**
+   packaging runs, **Then** Markdown/JSON reports, artifacts, raw ZIP, descriptor
+   and checksums bind to the same source and workflow run.
+2. **Given** failed/skipped/unrun checks, **When** reporting runs, **Then** actual
+   counts and gaps remain explicit; failed/missing results block publication.
+3. **Given** corrupt/missing/mismatched evidence or an existing published release,
+   **When** publish runs, **Then** no release is overwritten or made public.
+
+### Edge Cases
+
+- Templates copy files, not account authorization, secrets or repository settings.
+- CI validates attestations; it cannot authenticate reviewer independence or run
+  AI reviewers without a configured agent session/provider. Never fabricate them.
+- Unavailable agent/device/service checks remain unverified. Missing permissions
+  or plan support can prevent GitHub branch protection; report the actual error.
+- Local archives remain local until an authorized upload; target URLs are pending.
+
+## Requirements
+
+### Functional Requirements
+
+- **FR-001**: A small working CLI example MUST greet a trimmed nonempty name,
+  preserve Unicode and reject blank input. It demonstrates acceptance testing;
+  it is replaceable project code.
+- **FR-002**: Initialization MUST validate project/repository identifiers, update
+  project configuration and invalidate inherited approval records without deleting
+  user source or changing repository history/settings implicitly. CI MUST reject
+  a configured repository identity that differs from its actual repository.
+- **FR-003**: GitHub setup MUST apply the configured strict PR/host protection
+  within the authorized repository and expose failures rather than claim success.
+  Existing protection MUST be preserved for explicit reconciliation, not overwritten.
+
+### Nonfunctional Requirements
+
+- **NFR-001**: Spec and observable acceptance precede implementation. UI expert
+  proposals precede dependent UI work; material ambiguity waits for user decisions.
+  Shared design/state, accessibility, recovery and performance constraints apply
+  across relevant surfaces. Rendered acceptance and performance remain separate.
+- **NFR-002**: Stable requirement IDs, concrete checks, dimensions and gaps MUST
+  stay reconciled. Every test edit/addition/removal refreshes generated inventory
+  and canonical source fingerprints; stale or unmapped checks fail validation.
+- **NFR-003**: Exactly two fresh independent reviewers MUST approve the completed
+  candidate digest before each push/release, including initial template publication.
+  Any content change except the approval record invalidates both. Protected main
+  requires a PR after the first reviewed creation of an empty repository.
+- **NFR-004**: Raw runs MUST preserve bytes in ignored versioned folders and verified
+  archives. Git stores concise summaries/descriptors/reports. Reject corrupt,
+  missing/unexpected/unsafe members, Windows sanitization aliases/device names,
+  source mutations and overwrites. Preserve failures and originals; disclose scope,
+  local-only/pending/expired availability and configured retention.
+- **NFR-005**: Host execution MUST validate configured argument-array commands,
+  preserve raw logs and structured outcomes/source provenance, and return failure
+  for nonzero commands or invalid/missing test outcomes. No shell interpolation.
+- **NFR-006**: Release MUST require current successful host checks and validated
+  test counts, tag/version/changelog agreement, source/coverage/report/artifact/
+  archive bindings and checksums before remote calls. Attach Markdown/JSON reports
+  and raw evidence, link changelog/release/workflow, and refuse published overwrite.
+  CI transfer MUST preserve the exact validated publication file set regardless
+  of artifact extension or dot-prefixed filename, excluding intermediate/raw directories.
+- **NFR-007**: README stays concise; maintain onboarding, design, architecture and
+  owning feature diagrams. Check links, lint/format and documentation integrity.
+  Mark device/E2E/visual/performance gaps; never silently bless screenshot baselines.
+
+### Key Entities
+
+- **Project configuration**: replaceable argument-array gates/build commands and artifacts.
+- **Requirement mapping**: stable criterion, concrete checks, dimensions and explicit gaps.
+- **Candidate**: canonical Git path/mode/blob digest excluding only its approval record.
+- **Evidence run**: commands, outcomes, source fingerprints, configuration and raw bytes.
+- **Release package**: artifacts, current report/evidence and verified checksum manifest.
+
+## Success Criteria
+
+### Measurable Outcomes
+
+- **SC-001**: A fresh checkout runs the documented host command without a device.
+- **SC-002**: Fault tests reject stale coverage/approvals and altered evidence/releases.
+- **SC-003**: Generated repositories have an explicit adaptation/activation checklist.
+- **SC-004**: Current release reports show actual counts and remaining requirement gaps.
+
+## Assumptions
+
+Python 3.11+ runs workflow tooling; project languages may differ. GitHub CLI handles
+authorized repository setup/publication. The agent environment must support fresh
+independent reviewers. This template installs no credentials, API billing, global
+Codex configuration or unconditional unattended agent loop. Project-specific build,
+signing, E2E/device and visual adapters must be configured and verified explicitly.

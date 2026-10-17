@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "test_sources": {
+    "tests/__init__.py": {
+      "sha256": "c75331f22f41915ab3fa5598130ee9e858708a2f72bcd001cd4146d5f0e9cd66",
+      "cases": []
+    },
+    "tests/test_example.py": {
+      "sha256": "c29b1ea7ba4e3b6de659941e50f92539983c65586e63146dcee3d339ce5d19c8",
+      "cases": [
+        "GreetingAcceptance.test_cli_process_outputs_greeting_and_rejects_blank_input",
+        "GreetingAcceptance.test_greets_trimmed_name",
+        "GreetingAcceptance.test_preserves_unicode",
+        "GreetingAcceptance.test_rejects_blank_name"
+      ]
+    },
+    "tools/tests/test_evidence.py": {
+      "sha256": "f803e9726c229729f1cafa3fadc7d9eabd7cc91af67d20d03f3d21f3f3936b60",
+      "cases": [
+        "EvidenceArchiveTests.test_changed_archive_or_changed_member_is_rejected",
+        "EvidenceArchiveTests.test_cli_records_workflow_target_without_promoting_run_outcome",
+        "EvidenceArchiveTests.test_descriptor_scope_timestamp_and_totals_are_bound_to_archive",
+        "EvidenceArchiveTests.test_existing_output_is_never_overwritten",
+        "EvidenceArchiveTests.test_missing_unexpected_duplicate_and_unsafe_members_are_rejected",
+        "EvidenceArchiveTests.test_rejects_recursive_output_empty_source_and_missing_scope",
+        "EvidenceArchiveTests.test_round_trip_preserves_raw_bytes_scope_and_originals",
+        "EvidenceArchiveTests.test_source_link_is_rejected_before_output_creation",
+        "EvidenceArchiveTests.test_source_mutation_does_not_publish_verified_archive"
+      ]
+    },
+    "tools/tests/test_maintenance.py": {
+      "sha256": "b5645380b6880b82c9ae63a36c2ad7e32b0e39c5c52b222cfd6646f3a4d0964f",
+      "cases": [
+        "CoverageTests.test_added_test_requires_mapping_before_refresh",
+        "CoverageTests.test_changed_assertion_requires_refresh_even_when_case_name_is_unchanged",
+        "CoverageTests.test_deleted_or_renamed_test_rejects_stale_reference",
+        "CoverageTests.test_inventory_handles_java_entrypoints_and_junit_without_helpers",
+        "CoverageTests.test_inventory_is_identical_with_case_insensitive_path_comparison",
+        "CoverageTests.test_new_case_in_mapped_class_changes_inventory",
+        "CoverageTests.test_real_repository_coverage_is_current",
+        "CoverageTests.test_removed_helper_source_invalidates_snapshot",
+        "CoverageTests.test_report_retains_cases_dimensions_gaps_without_claiming_execution",
+        "CoverageTests.test_windows_line_endings_do_not_create_false_staleness",
+        "ReviewGateTests.test_installed_hook_blocks_real_push_then_allows_approved_candidate",
+        "ReviewGateTests.test_missing_record_and_invalid_push_input_fail_closed",
+        "ReviewGateTests.test_missing_single_duplicate_rejected_or_nonfresh_reviews_fail",
+        "ReviewGateTests.test_only_approval_record_is_excluded_from_digest",
+        "ReviewGateTests.test_pre_push_checks_actual_refs_including_annotated_tag",
+        "ReviewGateTests.test_ref_deletion_does_not_require_candidate",
+        "ReviewGateTests.test_source_add_edit_delete_and_filemode_changes_invalidate_approvals",
+        "ReviewGateTests.test_two_approvals_match_staged_and_committed_candidate"
+      ]
+    },
+    "tools/tests/test_pipeline.py": {
+      "sha256": "13f68e364bd5c4eb050b2a575d9f6e2c0935013c93faade78043a8b5fafeff29",
+      "cases": [
+        "BootstrapTests.test_existing_or_uninspectable_protection_is_never_overwritten",
+        "BootstrapTests.test_initialization_changes_identity_and_removes_inherited_approvals_only",
+        "BootstrapTests.test_invalid_initialization_preserves_existing_files",
+        "BootstrapTests.test_protection_targets_configured_repo_and_requires_strict_response",
+        "BootstrapTests.test_remote_protection_errors_and_incomplete_response_fail",
+        "DocumentationTests.test_broken_or_outside_links_fail_but_fenced_examples_are_ignored",
+        "DocumentationTests.test_repository_docs_and_spec_sections_are_valid",
+        "OutcomeTests.test_missing_empty_duplicate_bad_status_and_source_results_fail",
+        "OutcomeTests.test_quality_retains_nonzero_command_and_refuses_missing_results",
+        "OutcomeTests.test_recording_runner_preserves_actual_failure_and_skip",
+        "OutcomeTests.test_skips_failures_and_errors_are_counted_separately",
+        "ProjectTests.test_argument_arrays_preserve_literal_shell_metacharacters",
+        "ProjectTests.test_nonzero_and_missing_commands_retain_failure_logs",
+        "ProjectTests.test_rejects_invalid_command_and_identity_configurations",
+        "ReleaseTests.test_existing_published_or_draft_release_is_never_overwritten",
+        "ReleaseTests.test_failed_host_check_retains_raw_attempt_without_release_package",
+        "ReleaseTests.test_hidden_nonzip_artifact_survives_exact_export_and_import_validation",
+        "ReleaseTests.test_missing_empty_or_duplicate_changelog_notes_are_rejected",
+        "ReleaseTests.test_missing_or_corrupt_evidence_refuses_before_remote_call",
+        "ReleaseTests.test_resealed_raw_test_or_source_context_mismatch_is_rejected",
+        "ReleaseTests.test_resealed_report_mismatch_is_rejected",
+        "ReleaseTests.test_resealed_wrong_archive_commit_is_rejected",
+        "ReleaseTests.test_valid_package_binds_reports_counts_sources_and_assets",
+        "ReleaseTests.test_wrong_tag_dirty_source_and_stale_reviews_refuse_build"
+      ]
+    }
+  },
+  "requirements": {
+    "WF-EXAMPLE-001": [
+      "tests/test_example.py::GreetingAcceptance.test_cli_process_outputs_greeting_and_rejects_blank_input",
+      "tests/test_example.py::GreetingAcceptance.test_greets_trimmed_name",
+      "tests/test_example.py::GreetingAcceptance.test_preserves_unicode",
+      "tests/test_example.py::GreetingAcceptance.test_rejects_blank_name"
+    ],
+    "WF-INIT-001": [
+      "tools/tests/test_pipeline.py::BootstrapTests.test_initialization_changes_identity_and_removes_inherited_approvals_only",
+      "tools/tests/test_pipeline.py::BootstrapTests.test_invalid_initialization_preserves_existing_files"
+    ],
+    "WF-PROTECT-001": [
+      "tools/tests/test_pipeline.py::BootstrapTests.test_existing_or_uninspectable_protection_is_never_overwritten",
+      "tools/tests/test_pipeline.py::BootstrapTests.test_protection_targets_configured_repo_and_requires_strict_response",
+      "tools/tests/test_pipeline.py::BootstrapTests.test_remote_protection_errors_and_incomplete_response_fail"
+    ],
+    "WF-UI-001": [],
+    "WF-COVERAGE-001": [
+      "tools/tests/test_maintenance.py::CoverageTests.test_added_test_requires_mapping_before_refresh",
+      "tools/tests/test_maintenance.py::CoverageTests.test_changed_assertion_requires_refresh_even_when_case_name_is_unchanged",
+      "tools/tests/test_maintenance.py::CoverageTests.test_deleted_or_renamed_test_rejects_stale_reference",
+      "tools/tests/test_maintenance.py::CoverageTests.test_inventory_handles_java_entrypoints_and_junit_without_helpers",
+      "tools/tests/test_maintenance.py::CoverageTests.test_inventory_is_identical_with_case_insensitive_path_comparison",
+      "tools/tests/test_maintenance.py::CoverageTests.test_new_case_in_mapped_class_changes_inventory",
+      "tools/tests/test_maintenance.py::CoverageTests.test_real_repository_coverage_is_current",
+      "tools/tests/test_maintenance.py::CoverageTests.test_removed_helper_source_invalidates_snapshot",
+      "tools/tests/test_maintenance.py::CoverageTests.test_report_retains_cases_dimensions_gaps_without_claiming_execution",
+      "tools/tests/test_maintenance.py::CoverageTests.test_windows_line_endings_do_not_create_false_staleness"
+    ],
+    "WF-REVIEW-001": [
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_installed_hook_blocks_real_push_then_allows_approved_candidate",
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_missing_record_and_invalid_push_input_fail_closed",
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_missing_single_duplicate_rejected_or_nonfresh_reviews_fail",
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_only_approval_record_is_excluded_from_digest",
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_pre_push_checks_actual_refs_including_annotated_tag",
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_ref_deletion_does_not_require_candidate",
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_source_add_edit_delete_and_filemode_changes_invalidate_approvals",
+      "tools/tests/test_maintenance.py::ReviewGateTests.test_two_approvals_match_staged_and_committed_candidate"
+    ],
+    "WF-EVIDENCE-001": [
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_changed_archive_or_changed_member_is_rejected",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_cli_records_workflow_target_without_promoting_run_outcome",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_descriptor_scope_timestamp_and_totals_are_bound_to_archive",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_existing_output_is_never_overwritten",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_missing_unexpected_duplicate_and_unsafe_members_are_rejected",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_rejects_recursive_output_empty_source_and_missing_scope",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_round_trip_preserves_raw_bytes_scope_and_originals",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_source_link_is_rejected_before_output_creation",
+      "tools/tests/test_evidence.py::EvidenceArchiveTests.test_source_mutation_does_not_publish_verified_archive"
+    ],
+    "WF-QUALITY-001": [
+      "tools/tests/test_pipeline.py::OutcomeTests.test_missing_empty_duplicate_bad_status_and_source_results_fail",
+      "tools/tests/test_pipeline.py::OutcomeTests.test_quality_retains_nonzero_command_and_refuses_missing_results",
+      "tools/tests/test_pipeline.py::OutcomeTests.test_recording_runner_preserves_actual_failure_and_skip",
+      "tools/tests/test_pipeline.py::OutcomeTests.test_skips_failures_and_errors_are_counted_separately",
+      "tools/tests/test_pipeline.py::ProjectTests.test_argument_arrays_preserve_literal_shell_metacharacters",
+      "tools/tests/test_pipeline.py::ProjectTests.test_nonzero_and_missing_commands_retain_failure_logs",
+      "tools/tests/test_pipeline.py::ProjectTests.test_rejects_invalid_command_and_identity_configurations"
+    ],
+    "WF-RELEASE-001": [
+      "tools/tests/test_pipeline.py::ReleaseTests.test_existing_published_or_draft_release_is_never_overwritten",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_failed_host_check_retains_raw_attempt_without_release_package",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_hidden_nonzip_artifact_survives_exact_export_and_import_validation",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_missing_empty_or_duplicate_changelog_notes_are_rejected",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_missing_or_corrupt_evidence_refuses_before_remote_call",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_resealed_raw_test_or_source_context_mismatch_is_rejected",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_resealed_report_mismatch_is_rejected",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_resealed_wrong_archive_commit_is_rejected",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_valid_package_binds_reports_counts_sources_and_assets",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_wrong_tag_dirty_source_and_stale_reviews_refuse_build"
+    ],
+    "WF-DOC-001": [
+      "tools/tests/test_pipeline.py::DocumentationTests.test_broken_or_outside_links_fail_but_fenced_examples_are_ignored",
+      "tools/tests/test_pipeline.py::DocumentationTests.test_repository_docs_and_spec_sections_are_valid"
+    ]
+  }
+}

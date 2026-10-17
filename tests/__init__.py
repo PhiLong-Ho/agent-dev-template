@@ -1,0 +1,1 @@
+"""Reference project acceptance tests."""

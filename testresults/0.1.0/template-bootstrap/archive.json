@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "dc3784e9b600c6f8a977b15ac683d92c96c8b1cce9e8b69a0a8c3098e34588af",
+  "archive_bytes": 177579,
+  "file_count": 29,
+  "raw_bytes": 238638,
+  "created_utc": "2026-10-17T07:15:20.876923+00:00",
+  "context": {
+    "scope": "Initial uncommitted template: Windows host55 cases and generated-copy55 cases, skill validators and three rendered author-inspected documentation diagrams. Actual source fingerprints in host metadata. No live Actions/protection/release or app UI/performance certification.",
+    "packaging_commit": "uncommitted-bootstrap",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\agent-dev-template\\artifacts\\evidence\\20261017T071432Z-template\\evidence.zip"
+  }
+}
