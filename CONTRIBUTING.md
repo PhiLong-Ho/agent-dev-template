@@ -5,7 +5,7 @@ the owning [feature contract](docs/specs/README.md). Python 3.11+, Git and pip a
 needed for the starter. GitHub CLI is needed only for authorized remote operations.
 
 ```sh
-python -m pip install -r requirements-dev.txt
+python -m pip install -r requirements-dev.txt -r requirements-graph.txt
 python -m ruff format .
 python tools/coverage.py update
 python tools/quality.py

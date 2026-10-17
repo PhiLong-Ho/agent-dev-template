@@ -11,7 +11,7 @@ Click **Use this template**, clone your new repository, then:
 ```sh
 git switch -c chore/project-setup
 python tools/bootstrap.py init --name my-project --repository OWNER/REPO
-python -m pip install -r requirements-dev.txt
+python -m pip install -r requirements-dev.txt -r requirements-graph.txt
 git config core.hooksPath .githooks
 python tools/quality.py
 ```
@@ -26,3 +26,6 @@ validates their recorded candidate approvals, not reviewer identity.
 [Release guide](docs/RELEASING.md) · [Changelog](CHANGELOG.md)
 
 For an existing project, use [the adoption guide and ready-to-use prompt](docs/ADOPTING.md).
+
+Optional [Claude/Codex graph-first setup](docs/GRAPH_FIRST.md) and
+[latest approved UI references](docs/ui-reference/README.md).

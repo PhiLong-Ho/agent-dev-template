@@ -23,3 +23,9 @@ Tooling fault tests use isolated temporary repositories/services and mock GitHub
 publication. Messages printed by those fixtures are not actual remote publication.
 Run shared device/environment suites sequentially and restore usability afterward.
 Retain raw failures; follow [evidence policy](EVIDENCE.md).
+
+Graph workflow acceptance uses real pinned CRG and Graphify in temporary Git
+repositories on both CI platforms, plus payload/fault fixtures. User config tests
+use an isolated home and execute the installed command through the native shell.
+They never modify the real user home or fabricate native Codex trust. Product UI
+reference fixtures test integrity/freshness, not rendered product correctness.

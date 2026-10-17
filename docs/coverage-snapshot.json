@@ -28,6 +28,31 @@
         "EvidenceArchiveTests.test_source_mutation_does_not_publish_verified_archive"
       ]
     },
+    "tools/tests/test_graph_workflow.py": {
+      "sha256": "11abb4905efe0ddc6a35e721cb00f26e3f827ccf7a9e68bea51c69c7a0c69536",
+      "cases": [
+        "GraphPolicyTests.test_extra_exclusions_and_budget_fail_without_reading_binary_as_code",
+        "GraphPolicyTests.test_only_eligible_tracked_code_documents_enter_release",
+        "GraphPolicyTests.test_path_traversal_and_nested_noise_are_never_eligible",
+        "HookTests.test_claude_grep_and_codex_edit_and_prompt_use_shared_context",
+        "HookTests.test_common_search_options_keep_results_and_add_graph_context",
+        "HookTests.test_first_hit_teaches_second_redirects_once_then_retry_is_allowed",
+        "HookTests.test_hits_outside_requested_directory_do_not_redirect_search",
+        "HookTests.test_misses_and_timeout_or_lock_failure_allow_diagnosed_fallback",
+        "HookTests.test_override_literal_complex_noncode_and_cross_repo_searches_proceed",
+        "HookTests.test_stop_never_requests_continuation_and_unknown_session_never_denies",
+        "HookTests.test_windows_backslash_paths_never_redirect_to_conflicting_directory",
+        "InstalledGraphTests.test_real_crg_refresh_observes_edits_deletions_and_test_relationships",
+        "InstalledGraphTests.test_real_graphify_release_contains_code_docs_links_and_provenance",
+        "InstallerTests.test_installed_command_executes_through_native_shell_with_spaces",
+        "InstallerTests.test_malformed_settings_fail_before_runtime_or_instruction_mutation",
+        "InstallerTests.test_private_settings_and_backups_stay_private_with_permissive_umask",
+        "InstallerTests.test_real_install_is_idempotent_backs_up_and_preserves_other_hooks_permissions",
+        "UIReferenceTests.test_latest_reference_rejects_source_and_image_changes",
+        "UIReferenceTests.test_missing_states_approval_and_unsafe_images_are_rejected",
+        "UIReferenceTests.test_no_ui_requires_explicit_empty_scope_and_reason"
+      ]
+    },
     "tools/tests/test_maintenance.py": {
       "sha256": "b5645380b6880b82c9ae63a36c2ad7e32b0e39c5c52b222cfd6646f3a4d0964f",
       "cases": [
@@ -52,7 +77,7 @@
       ]
     },
     "tools/tests/test_pipeline.py": {
-      "sha256": "9719f42e284ef4104f3d04816b6df433600c240abe0823e4dd0837d6dbd36845",
+      "sha256": "f50f7c1507a13ceaa953d2d96a47393e2d0548eb666aab3aa16a1f1c93eba555",
       "cases": [
         "BootstrapTests.test_existing_or_uninspectable_protection_is_never_overwritten",
         "BootstrapTests.test_initialization_changes_identity_and_removes_inherited_approvals_only",
@@ -71,6 +96,7 @@
         "ProjectTests.test_rejects_invalid_command_and_identity_configurations",
         "ReleaseTests.test_existing_published_or_draft_release_is_never_overwritten",
         "ReleaseTests.test_failed_host_check_retains_raw_attempt_without_release_package",
+        "ReleaseTests.test_graph_assets_are_required_exported_and_validated_before_publish",
         "ReleaseTests.test_hidden_nonzip_artifact_survives_exact_export_and_import_validation",
         "ReleaseTests.test_missing_empty_or_duplicate_changelog_notes_are_rejected",
         "ReleaseTests.test_missing_or_corrupt_evidence_refuses_before_remote_call",
@@ -144,6 +170,7 @@
     "WF-RELEASE-001": [
       "tools/tests/test_pipeline.py::ReleaseTests.test_existing_published_or_draft_release_is_never_overwritten",
       "tools/tests/test_pipeline.py::ReleaseTests.test_failed_host_check_retains_raw_attempt_without_release_package",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_graph_assets_are_required_exported_and_validated_before_publish",
       "tools/tests/test_pipeline.py::ReleaseTests.test_hidden_nonzip_artifact_survives_exact_export_and_import_validation",
       "tools/tests/test_pipeline.py::ReleaseTests.test_missing_empty_or_duplicate_changelog_notes_are_rejected",
       "tools/tests/test_pipeline.py::ReleaseTests.test_missing_or_corrupt_evidence_refuses_before_remote_call",
@@ -157,6 +184,35 @@
       "tools/tests/test_pipeline.py::DocumentationTests.test_broken_or_outside_links_fail_but_fenced_examples_are_ignored",
       "tools/tests/test_pipeline.py::DocumentationTests.test_filesystem_path_aliases_report_link_errors_without_crashing",
       "tools/tests/test_pipeline.py::DocumentationTests.test_repository_docs_and_spec_sections_are_valid"
+    ],
+    "WF-GRAPH-001": [
+      "tools/tests/test_graph_workflow.py::HookTests.test_claude_grep_and_codex_edit_and_prompt_use_shared_context",
+      "tools/tests/test_graph_workflow.py::HookTests.test_common_search_options_keep_results_and_add_graph_context",
+      "tools/tests/test_graph_workflow.py::HookTests.test_first_hit_teaches_second_redirects_once_then_retry_is_allowed",
+      "tools/tests/test_graph_workflow.py::HookTests.test_hits_outside_requested_directory_do_not_redirect_search",
+      "tools/tests/test_graph_workflow.py::HookTests.test_misses_and_timeout_or_lock_failure_allow_diagnosed_fallback",
+      "tools/tests/test_graph_workflow.py::HookTests.test_override_literal_complex_noncode_and_cross_repo_searches_proceed",
+      "tools/tests/test_graph_workflow.py::HookTests.test_stop_never_requests_continuation_and_unknown_session_never_denies",
+      "tools/tests/test_graph_workflow.py::HookTests.test_windows_backslash_paths_never_redirect_to_conflicting_directory",
+      "tools/tests/test_graph_workflow.py::InstalledGraphTests.test_real_crg_refresh_observes_edits_deletions_and_test_relationships"
+    ],
+    "WF-INSTALL-001": [
+      "tools/tests/test_graph_workflow.py::InstallerTests.test_installed_command_executes_through_native_shell_with_spaces",
+      "tools/tests/test_graph_workflow.py::InstallerTests.test_malformed_settings_fail_before_runtime_or_instruction_mutation",
+      "tools/tests/test_graph_workflow.py::InstallerTests.test_private_settings_and_backups_stay_private_with_permissive_umask",
+      "tools/tests/test_graph_workflow.py::InstallerTests.test_real_install_is_idempotent_backs_up_and_preserves_other_hooks_permissions"
+    ],
+    "WF-SNAPSHOT-001": [
+      "tools/tests/test_graph_workflow.py::GraphPolicyTests.test_extra_exclusions_and_budget_fail_without_reading_binary_as_code",
+      "tools/tests/test_graph_workflow.py::GraphPolicyTests.test_only_eligible_tracked_code_documents_enter_release",
+      "tools/tests/test_graph_workflow.py::GraphPolicyTests.test_path_traversal_and_nested_noise_are_never_eligible",
+      "tools/tests/test_graph_workflow.py::InstalledGraphTests.test_real_graphify_release_contains_code_docs_links_and_provenance",
+      "tools/tests/test_pipeline.py::ReleaseTests.test_graph_assets_are_required_exported_and_validated_before_publish"
+    ],
+    "WF-REFERENCE-001": [
+      "tools/tests/test_graph_workflow.py::UIReferenceTests.test_latest_reference_rejects_source_and_image_changes",
+      "tools/tests/test_graph_workflow.py::UIReferenceTests.test_missing_states_approval_and_unsafe_images_are_rejected",
+      "tools/tests/test_graph_workflow.py::UIReferenceTests.test_no_ui_requires_explicit_empty_scope_and_reason"
     ]
   }
 }

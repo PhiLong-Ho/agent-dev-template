@@ -26,6 +26,14 @@
       ]
     },
     {
+      "name": "ui-references",
+      "argv": [
+        "{python}",
+        "tools/ui_reference.py",
+        "check"
+      ]
+    },
+    {
       "name": "tests",
       "argv": [
         "{python}",
@@ -54,6 +62,7 @@
     ],
     "artifacts": [
       "example-*.zip"
-    ]
+    ],
+    "knowledge_graph": true
   }
 }

@@ -10,7 +10,7 @@ or protection settings. Work on a branch before initialization:
 ```sh
 git switch -c chore/project-setup
 python tools/bootstrap.py init --name my-project --repository OWNER/NAME
-python -m pip install -r requirements-dev.txt
+python -m pip install -r requirements-dev.txt -r requirements-graph.txt
 git config core.hooksPath .githooks
 python tools/quality.py
 python -m src.example Ada
@@ -83,3 +83,10 @@ Stale coverage: reconcile checks then regenerate. Stale approvals: new pair of
 reviewers. Missing test JSON: fix runner adapter/source identity. Unavailable raw
 archive: report the gap; hashes cannot restore lost files. Permission/plan errors
 applying protection are not successful setup. Never fix gates by forging results.
+
+## Optional local graph setup and UI adaptation
+
+Follow [graph-first setup](GRAPH_FIRST.md) once per machine for both clients;
+restart and review Codex /hooks. Global settings/permissions are preserved and
+backed up. Enable actual [UI references](ui-reference/README.md) when replacing
+the CLI with a UI; declare source patterns/states before claiming freshness.

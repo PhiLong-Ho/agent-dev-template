@@ -61,6 +61,32 @@ source/result/artifact hashes; publication must refuse before remote mutations.
 3. **Given** corrupt/missing/mismatched evidence or an existing published release,
    **When** publish runs, **Then** no release is overwritten or made public.
 
+### User Story 4 — Use graph-first development (Priority: P1)
+
+**Independent Test**: Feed Claude/Codex hook payloads to an isolated repository,
+change/delete code and exercise useful hits, misses, overrides and tool failures.
+Release fixtures must index current code/documents and reject excluded inputs.
+
+**Acceptance Scenarios**:
+
+1. Given any coding/review session, when a prompt, code search or edit occurs,
+   then code-review-graph refreshes locally within a bound and supplies navigation
+   and change-impact context; unavailable/stale graphs disclose fallback.
+2. Given a simple repeated symbol search with a fresh graph hit, when the hook
+   redirects it, then it returns valid deny JSON and useful locations, with an
+   explicit comment override and bounded retries. Literal/complex/cross-repository
+   searches and graph misses remain available. Hooks never approve permissions.
+3. Given an authorized local installation, when run twice, then both clients use
+   one maintained implementation, existing unrelated settings survive, backups
+   exist, and Codex's native hook trust remains a separate user action.
+4. Given a release build, when Graphify runs, then only current eligible tracked
+   code/documents enter a checksummed release snapshot. Routine hooks never
+   regenerate Graphify. Documentation indexing states its structural scope.
+5. Given a UI change, when preparing acceptance and final review, then the latest
+   approved reference catalog is reconciled for affected screens/states; missing
+   or stale references block the configured reference gate. The starter declares
+   that no product UI exists rather than fabricating screenshots or approval.
+
 ### Edge Cases
 
 - Templates copy files, not account authorization, secrets or repository settings.
@@ -84,6 +110,29 @@ source/result/artifact hashes; publication must refuse before remote mutations.
 - **FR-003**: GitHub setup MUST apply the configured strict PR/host protection
   within the authorized repository and expose failures rather than claim success.
   Existing protection MUST be preserved for explicit reconciliation, not overwritten.
+
+- **FR-004**: Shared Claude/Codex hooks MUST automatically consult locally refreshed
+  code-review-graph for prompts, code searches/edits and review impact. Bound time,
+  context, traversal, file sizes and concurrency. Parameterized search results are
+  hints, never exhaustive literal results. Windows path separators MUST survive parsing; ambiguous scopes MUST NOT deny
+  the original search. Missing, failed, corrupt or concurrently
+  updating graphs MUST allow explicit diagnosed fallback; no permanent search loop.
+- **FR-005**: User-scope installation MUST be idempotent, preserve unrelated settings
+  and permission policy, preserve existing file modes, create private backups and
+  private new configuration files, avoid repository-controlled command
+  execution and leave native hook trust intact. Both clients use valid event JSON.
+- **FR-006**: Graphify generation MUST run only during explicit release builds from
+  current tracked eligible code/docs and project build configuration, with source/hash provenance and required
+  checksum-bound assets. Exclude evidence, screenshots, local/secret configuration,
+  binaries, caches and generated/vendor output even if tracked. AST extraction and
+  deterministic document headings/links MUST connect to referenced code nodes and
+  be labeled distinctly from optional
+  LLM semantic extraction. No automatic paid provider calls are introduced.
+- **FR-007**: A master UI reference catalog MUST identify latest approved renders
+  per screen/state/configuration, source fingerprints, raw evidence location and
+  actual reviewer identity/date. Validation MUST reject missing/altered references
+  or changed relevant UI sources. Updates require inspection and actual approval;
+  preserve history in evidence archives. No-UI projects explicitly declare scope.
 
 ### Nonfunctional Requirements
 
@@ -139,6 +188,6 @@ source/result/artifact hashes; publication must refuse before remote mutations.
 
 Python 3.11+ runs workflow tooling; project languages may differ. GitHub CLI handles
 authorized repository setup/publication. The agent environment must support fresh
-independent reviewers. This template installs no credentials, API billing, global
-Codex configuration or unconditional unattended agent loop. Project-specific build,
+independent reviewers. The optional explicitly invoked local installer configures user hooks and graph
+skills; it installs no credentials, API billing or unattended agent loop. Project-specific build,
 signing, E2E/device and visual adapters must be configured and verified explicitly.

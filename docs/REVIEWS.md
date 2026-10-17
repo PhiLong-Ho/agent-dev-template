@@ -72,3 +72,8 @@ CI prevents stale/missing records in the normal quality/release workflows. GitHu
 branch protection and authenticated human review are separate repository settings.
 Do not describe this mechanism as tamper-proof. If fresh agents are unavailable or
 either rejects, keep local work reviewable and do not push or release.
+
+Before reviewing code changes, use [current CRG navigation and direct-neighbor
+impact](GRAPH_FIRST.md); inspect source/tests and disclose unavailable graphs.
+For UI changes review current master references and their actual approval scope.
+Graphify snapshots are release-time context, not fresh working-tree evidence.

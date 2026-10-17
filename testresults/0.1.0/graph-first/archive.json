@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "c36406efd4ad19da58ebfde8213c757b7d4eae85054abda0fc7b1b03c2538bc3",
+  "archive_bytes": 417364,
+  "file_count": 112,
+  "raw_bytes": 917477,
+  "created_utc": "2026-10-17T08:14:34.646293+00:00",
+  "context": {
+    "scope": "Current Windows host candidate: actual passes and explicit POSIX-only skip; retained previous attempts; real Codex routing/Windows paths, runtime hashes and rendered diagrams. POSIX permission execution awaits Ubuntu CI; Claude callbacks, product UI and hosted release unverified.",
+    "packaging_commit": "bae6bbc0373fd3c1d08c32e4d3fa1cebd7287ede",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\agent-dev-template\\artifacts\\evidence\\graph-first-private\\evidence.zip"
+  }
+}

@@ -10,6 +10,8 @@ import subprocess
 import zipfile
 
 import evidence
+import graph_release
+from graph_common import inventory
 import project
 import quality
 import review_gate
@@ -84,10 +86,17 @@ def build(root, output, tag, workflow_url):
                 "package.json",
                 "SHA256SUMS.txt",
                 "release-notes.md",
+                "knowledge-graph.zip",
+                "knowledge-graph-manifest.json",
+                "graphify.log",
             }:
                 raise ValueError("Release artifact name collides with metadata")
             assets.add(path.name)
             shutil.copyfile(path, output / path.name)
+    if config["release"].get("knowledge_graph", False):
+        graph_release.create(root, output, tag, state["commit"])
+        assets.update({"knowledge-graph.zip", "knowledge-graph-manifest.json"})
+        shutil.copyfile(output / "graphify.log", raw / "graphify.log")
     tests = host["tests"]
     executed = sum(value for key, value in tests.items() if key != "skipped")
     coverage = project.read_json(root / "docs/requirements.json")
@@ -108,6 +117,7 @@ def build(root, output, tag, workflow_url):
             for req in coverage["requirements"]
             if req["coverage"] != "mapped"
         ],
+        "knowledge_graph": config["release"].get("knowledge_graph", False),
         "scope": host["scope"],
         "host_results_sha256": evidence.digest_file(raw / "host-results.json"),
         "test_sources": {name: evidence.digest_file(raw / name) for name in config["test_results"]},
@@ -169,10 +179,16 @@ def build(root, output, tag, workflow_url):
 def render_report(report):
     base = f"https://github.com/{report['repository']}"
     tag = report["tag"]
+    graph = (
+        f"\n[Knowledge graph]({base}/releases/download/{tag}/knowledge-graph.zip) - local AST + explicit document headings/links, no semantic inference.\n"
+        if report.get("knowledge_graph")
+        else ""
+    )
     return (
         f"# {report['name']} {report['version']} release report\n\nSource: `{report['source_commit']}`.\n\n[Changelog]({base}/blob/{tag}/CHANGELOG.md) · [Release]({base}/releases/tag/{tag}) · [Workflow]({report['workflow_url']}) · [Raw evidence]({base}/releases/download/{tag}/release-evidence.zip)\n\nTests: {report['tests']}; pass rate {report['tests']['passed']}/{report['executed_denominator']} executed cases ({report['pass_rate']:.1%}); skipped excluded from denominator.\n\nRequirement mappings: {report['coverage']}. Mapping is not scenario execution.\n\nScope: {report['scope']}\n\nGaps:\n"
         + "\n".join(f"- {gap['id']}: {gap['gap']}" for gap in report["gaps"])
         + "\n"
+        + graph
     )
 
 
@@ -188,6 +204,8 @@ def validate(root, output):
         raise ValueError("Release source/identity mismatch")
     files = metadata["files"]
     required = {*REPORTS, *EVIDENCE, "release-notes.md"}
+    if config["release"].get("knowledge_graph", False):
+        required.update({"knowledge-graph.zip", "knowledge-graph-manifest.json"})
     if not required < files.keys():
         raise ValueError("Missing artifacts/report/evidence")
     expected = dict(files, **{"package.json": evidence.digest_file(output / "package.json")})
@@ -207,6 +225,14 @@ def validate(root, output):
         seen[name] = digest
     if seen != expected:
         raise ValueError("Release checksums incomplete")
+    if config["release"].get("knowledge_graph", False):
+        graph_release.validate(
+            output / "knowledge-graph.zip",
+            output / "knowledge-graph-manifest.json",
+            state["commit"],
+            metadata["tag"],
+            inventory(root, documents=True, tracked=True),
+        )
     descriptor = project.read_json(output / EVIDENCE[1])
     manifest = evidence.verify_archive(output / EVIDENCE[0], descriptor)
     for key in ("tag", "repository", "workflow_url"):
@@ -224,6 +250,8 @@ def validate(root, output):
         or report.get("source_commit") != state["commit"]
     ):
         raise ValueError("Report identity mismatch")
+    if report.get("knowledge_graph", False) != config["release"].get("knowledge_graph", False):
+        raise ValueError("Report knowledge graph scope mismatch")
     if (output / REPORTS[0]).read_text(encoding="utf-8") != render_report(report):
         raise ValueError("Markdown report differs from structured report")
     with zipfile.ZipFile(output / EVIDENCE[0]) as bundle:

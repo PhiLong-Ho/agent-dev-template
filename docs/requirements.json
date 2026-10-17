@@ -26,6 +26,9 @@
     },
     "tools/tests/test_evidence.py": {
       "entry": "tools/tests/test_evidence.py"
+    },
+    "tools/tests/test_graph_workflow.py": {
+      "entry": "tools/tests/test_graph_workflow.py"
     }
   },
   "requirements": [
@@ -207,6 +210,82 @@
       ],
       "checks": [
         "tools/tests/test_pipeline.py::DocumentationTests"
+      ]
+    },
+    {
+      "id": "WF-GRAPH-001",
+      "criterion": "Bounded current code-review-graph context and safe adaptive search routing for Claude/Codex coding and review.",
+      "spec_section": "Functional Requirements",
+      "spec_requirement": "FR-004",
+      "coverage": "partial",
+      "gap": "Native client hook activation/trust requires session restart and Codex /hooks. Shell interception deliberately targets simple symbol searches; exact/complex searches remain available. Large repositories beyond configured budgets fall back explicitly.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_graph_workflow.py"
+      ],
+      "checks": [
+        "tools/tests/test_graph_workflow.py::HookTests",
+        "tools/tests/test_graph_workflow.py::InstalledGraphTests.test_real_crg_refresh_observes_edits_deletions_and_test_relationships"
+      ]
+    },
+    {
+      "id": "WF-INSTALL-001",
+      "criterion": "Idempotent backed-up user installation preserves unrelated settings, permissions and native trust.",
+      "spec_section": "Functional Requirements",
+      "spec_requirement": "FR-005",
+      "coverage": "partial",
+      "gap": "Host fixtures exercise installation and direct hook payloads; native trust is never fabricated or bypassed. POSIX private-mode regression runs on Ubuntu CI and is explicitly skipped on Windows; Windows ACL preservation beyond normal inherited user-directory protection is not certified.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_graph_workflow.py"
+      ],
+      "checks": [
+        "tools/tests/test_graph_workflow.py::InstallerTests"
+      ]
+    },
+    {
+      "id": "WF-SNAPSHOT-001",
+      "criterion": "Release-only Graphify AST and structural document snapshot excludes unrelated inputs and binds source/checksums.",
+      "spec_section": "Functional Requirements",
+      "spec_requirement": "FR-006",
+      "coverage": "partial",
+      "gap": "Default release graph is local AST plus explicit text headings/links and file coverage, not semantic document inference. Actual hosted release publication is unrun until requested.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_graph_workflow.py",
+        "tools/tests/test_pipeline.py"
+      ],
+      "checks": [
+        "tools/tests/test_graph_workflow.py::GraphPolicyTests",
+        "tools/tests/test_graph_workflow.py::InstalledGraphTests.test_real_graphify_release_contains_code_docs_links_and_provenance",
+        "tools/tests/test_pipeline.py::ReleaseTests.test_graph_assets_are_required_exported_and_validated_before_publish"
+      ]
+    },
+    {
+      "id": "WF-REFERENCE-001",
+      "criterion": "Latest approved UI catalog rejects missing, altered or stale reference evidence and source fingerprints.",
+      "spec_section": "Functional Requirements",
+      "spec_requirement": "FR-007",
+      "coverage": "partial",
+      "gap": "Starter has no product UI. Approval metadata is an attestation; actual rendered review and project-specific screen/rotation/input coverage must be supplied during adoption.",
+      "dimensions": [
+        "state",
+        "platform"
+      ],
+      "suites": [
+        "tools/tests/test_graph_workflow.py"
+      ],
+      "checks": [
+        "tools/tests/test_graph_workflow.py::UIReferenceTests"
       ]
     }
   ]

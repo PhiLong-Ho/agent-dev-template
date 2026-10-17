@@ -38,3 +38,7 @@ change record. Reconcile spec/design before code. Re-review material departures
 from the chosen flow. Proposal acceptance is separate from actual rendered review,
 golden approval and measured performance, and never substitutes for either of the
 two fresh final code reviews.
+
+Inspect the latest approved master reference set in docs/ui-reference before
+proposing changes. Missing/stale views are a gap, not permission to invent approval.
+The implementation must reconcile affected master views after rendered acceptance.
