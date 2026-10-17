@@ -74,3 +74,13 @@ Run tools/check_privacy.py; public host input must pass its --evidence guard bef
 packaging/upload. Never restore withdrawn private evidence or merge tainted history.
 Privacy cleanup overrides historical raw-evidence retention, not integrity checks
 for retained records. History/protection exceptions require explicit user approval.
+
+## Architecture approval for every release
+
+Every new version candidate (patch, prerelease and docs-only included) needs a
+fresh architecture expert after checks/evidence and before two final reviewers.
+Task N/A never waives it. Follow docs/RELEASING.md#release-architecture-review:
+record exact pre-attestation snapshot, actual reviewer/verdict, cumulative release
+scope/findings/gaps; missing approval/blockers prohibit tag/push/dispatch/sign/publish.
+Only faithful attestation may follow that inspected snapshot; final reviewers
+approve its inclusion in the final canonical digest, with no new exclusions.

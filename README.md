@@ -33,3 +33,6 @@ Optional [Claude/Codex graph-first setup](docs/GRAPH_FIRST.md) and
 
 Test evidence: [privacy policy](docs/PRIVACY.md). Personal app captures stay local;
 public artifacts contain only guarded host results and reviewed synthetic fixtures.
+
+Every version release requires an architecture expert and two final reviewers;
+see [release procedure](docs/RELEASING.md#release-architecture-review).

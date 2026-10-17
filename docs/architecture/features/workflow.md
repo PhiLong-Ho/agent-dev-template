@@ -14,7 +14,10 @@ flowchart LR
     Setup[Explicit bootstrap and stack config] --> Contract[Specs and expert decisions]
     Contract --> Quality[Configured quality and test adapters]
     Quality --> Archive[Verified current evidence]
-    Archive --> Review[Real reviews and digest attestation]
+    Archive --> RC{New version?}
+    RC -->|Yes| AR[Fresh architecture approval and attestation]
+    RC -->|No| Review[Two fresh final code reviews]
+    AR --> Review
     Review --> PR[Protected PR and CI]
     PR --> Release[Authorized validated release package]
 ```
@@ -24,26 +27,37 @@ flowchart LR
 ```mermaid
 sequenceDiagram
     participant A as Agent session
-    participant T as Configured tools
-    participant R as Fresh reviewers
+    participant T as Quality and<br/>evidence tools
+    participant AR as Fresh release<br/>architect
+    participant R as Two fresh<br/>final reviewers
     participant G as GitHub
-    A->>A: Settle spec and architectural or UI decisions
-    A->>T: Run quality and source-bound test adapters
-    T-->>A: Actual outcomes and preserved raw evidence
-    alt Required results pass
-        A->>T: Verify archive and freeze and snapshot candidate
-        A->>R: Two independent final reviews
-        R-->>A: Explicit candidate verdicts
-        alt Both approve unchanged candidate
-            A->>G: Authorized PR with required host gates
-            A->>T: Authorized release build after merge
-            T->>T: Validate current source, results, artifacts and evidence
-            T->>G: Publish only validated package
-        else Rejected or stale approvals
-            A->>A: Resolve and obtain a new pair
+    A->>T: Run required checks and preserve evidence
+    T-->>A: Source-bound outcomes and explicit gaps
+    alt Required acceptance fails
+        A->>A: Retain failure and block conditional delivery
+    else Completed candidate verified
+        A->>T: Freeze inspected snapshot
+        opt Every new version candidate
+            A->>AR: Cumulative release diff and current architecture
+            AR-->>A: Actual approval or blockers and gaps
         end
-    else Failure or missing outcomes
-        T-->>A: Block delivery and retain failure
+        alt Release approval missing or blocking
+            A->>A: Block release tag and dispatch,<br/>release signing and publication
+        else Routine change or release architecture approved
+            A->>A: For release record only<br/>faithful architecture attestation
+            A->>T: Freeze final tree and canonical digest
+            A->>R: Independent final candidate, contract and evidence
+            R-->>A: Two actual verdicts
+            alt Both approve unchanged final candidate
+                A->>G: Authorized protected PR and required host check
+                opt Authorized release
+                    A->>G: Authorized merged-main release steps
+                    G->>G: Validate current package and reports before publish
+                end
+            else Rejected or changed candidate
+                A->>A: Resolve, reverify and renew affected reviews
+            end
+        end
     end
 ```
 
@@ -53,3 +67,8 @@ Initialization invalidates inherited approvals and does not grant account permis
 
 See [requirements and gaps](../../requirements.json); diagrams and syntax validation
 do not establish runtime correctness or measured performance.
+
+Every new version requires the [release architecture checkpoint](../../RELEASING.md#release-architecture-review).
+The inspected snapshot precedes its attestation; final reviewers approve the full
+canonical tree including that record. Missing approval blocks the release agent,
+not a newly implemented CI architecture-judgment service.

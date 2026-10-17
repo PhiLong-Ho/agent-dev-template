@@ -35,3 +35,12 @@ workflow alignment with adopting projects or explicit pending companion scope.
 Compact summary/descriptor, verified ZIP/member hashes and reviewer access;
 actual local/pending/uploaded location/retention; coverage refresh/report/snapshot;
 two actual fresh final reviewers and candidate digest; gate/PR/CI/release links.
+
+## Release architecture (required for every new version, not task N/A)
+
+- Exact pre-attestation tree/digest and version/previous release baseline:
+- Fresh expert identity/UTC, actual scope/findings/verdict/blockers/gaps:
+- Attestation-only delta verified by two different fresh final reviewers:
+- Final canonical digest includes the record; no extra exclusions:
+- Any changed input/re-review or byte-identical same-version transport retry reason:
+- Release authorization blocked until actual approval and blockers resolved:
