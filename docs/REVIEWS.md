@@ -81,3 +81,14 @@ Before reviewing code changes, use [current CRG navigation and direct-neighbor
 impact](GRAPH_FIRST.md); inspect source/tests and disclose unavailable graphs.
 For UI changes review current master references and their actual approval scope.
 Graphify snapshots are release-time context, not fresh working-tree evidence.
+
+## Release architecture prerequisite
+
+Every new version candidate first needs the fresh architecture approval specified
+in [RELEASING](RELEASING.md#release-architecture-review), including patches,
+prereleases and docs-only. The architecture expert cannot be either final reviewer.
+Inspect its actual verdict, baseline/version/scope and pre-attestation snapshot.
+Verify that only faithful architecture attestation was added to that inspected
+tree; any other content change needs renewed architecture review. Then approve
+the final canonical digest including that record. Keep approvals.json as the sole
+exclusion. This supplements, and does not replace, the existing two-agent gate.

@@ -162,11 +162,11 @@ Gap: Host fixtures target streaming before exit, byte preservation, Windows/POSI
 
 ### WF-ARCH-001
 
-Source-linked whole-system/component overview and feature overview/sequence atlas stay reconciled; every task screens architecture impact and architecture-affecting or uncertain changes obtain a fresh expert approach review before dependent work, with material questions/departures resolved separately from UI and final reviews.
+Source-linked whole-system/component overview and feature overview/sequence atlas stay reconciled; every task screens architecture impact and architecture-affecting or uncertain changes obtain a fresh expert approach review before dependent work, with material questions/departures resolved separately from UI and final reviews. Every new version candidate (patch, prerelease and documentation-only included) requires fresh explicit release architecture approval after checks/evidence and before the two final reviewers; no task N/A waiver. Inspect cumulative changes since preceding release and current architecture, record exact pre-attestation snapshot/identity/verdict/findings/gaps, and block release authorization steps if missing or rejected. Final reviewers verify only faithful attestation was added and approve final canonical digest including it; sole approvals.json exclusion unchanged.
 
 Scenario dimensions: state: success, failure, missing, stale, unverified.
 
-Gap: Source/render inspection and workflow scenario walkthrough are manual. No automated gate authenticates expert judgment or guarantees diagram semantics/completeness; documentation does not certify runtime behavior. No new device or product UI verification is implied.
+Gap: Source/render inspection and workflow scenario walkthrough are manual. No automated gate authenticates expert judgment or guarantees diagram semantics/completeness; documentation does not certify runtime behavior. No new device or product UI verification is implied. Release architecture review is an agent-session/manual obligation; existing CI does not authenticate or newly enforce that judgment. New-version/changed-input reviews, missing/blocking verdicts, exact-candidate retry identity and attestation-only delta are manual scenarios, not automated test passes.
 
 ### WF-PRIVACY-001
 

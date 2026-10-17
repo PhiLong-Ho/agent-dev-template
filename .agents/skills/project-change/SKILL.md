@@ -56,3 +56,11 @@ Follow docs/PRIVACY.md: real app/device captures stay private local. Use synthet
 fixtures by default. Public host inputs and indexed paths must pass check_privacy;
 privacy withdrawal overrides historical retention without certifying missing bytes.
 Never reintroduce removed evidence from an old clone/history.
+
+For EVERY new version candidate (including patches/prereleases/docs-only), invoke
+architecture-review after completed checks/evidence and before the two fresh final
+reviewers. Task-level N/A and earlier preflight are not waivers. Require explicit
+approval of the frozen pre-attestation inputs and record identity/version/baseline/
+snapshot/findings/gaps. Block tag creation/push, release dispatch, signing and
+publication if missing or blocked. Follow docs/RELEASING.md#release-architecture-review
+for attestation-only delta checks, unchanged retry identity and final digest binding.

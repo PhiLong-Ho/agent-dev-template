@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "candidate_sha256": "52785dbb49d119541ecd843f68b134c4148b21da4fab890c9b120726ac2cd74e",
+  "candidate_sha256": "34bbe5667ece41b74443f78a7900e39914b971b17c9aadc3d68a14fee3ff81e1",
   "reviews": [
     {
-      "agent_id": "/root/privacy_final_a",
+      "agent_id": "/root/arch_release_final_a",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T13:09:05Z",
-      "scope": "Reusable privacy guard, workflow boundaries, specs/tests and local evidence; no history rewrite or remote erasure claim.",
-      "summary": "No blocking findings. Independently verified staged content, contracts, actual guard behavior, coverage and archive/member/source/diagram bindings. Paths/signatures are bounded privacy checks, not semantic DLP or proof of remote history/cache cleanup."
+      "reviewed_at": "2026-10-17T13:21:05Z",
+      "scope": "All 20 staged template policy/spec/coverage/evidence files, canonical digest behavior, host evidence reuse and rendered delivery diagrams.",
+      "summary": "No blocking findings. Verified archive/member/source bindings and unchanged host executable/test/CI inputs. Architecture judgment remains a manual session obligation. Excludes version release, broader dirty DexDroid candidate, device acceptance and privacy-history replacement."
     },
     {
-      "agent_id": "/root/privacy_final_b",
+      "agent_id": "/root/arch_release_final_b",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T13:09:29Z",
-      "scope": "Reusable privacy guard, workflow boundaries, specs/tests and local evidence; no history rewrite or remote erasure claim.",
-      "summary": "No blocking findings. Independently verified staged content, contracts, actual guard behavior, coverage and archive/member/source/diagram bindings. Paths/signatures are bounded privacy checks, not semantic DLP or proof of remote history/cache cleanup."
+      "reviewed_at": "2026-10-17T13:21:16Z",
+      "scope": "All 20 staged template policy/spec/coverage/evidence files, canonical digest behavior, host evidence reuse and rendered delivery diagrams.",
+      "summary": "No blocking findings. Verified archive/member/source bindings and unchanged host executable/test/CI inputs. Architecture judgment remains a manual session obligation. Excludes version release, broader dirty DexDroid candidate, device acceptance and privacy-history replacement."
     }
   ]
 }

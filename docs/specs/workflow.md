@@ -50,7 +50,10 @@ flowchart LR
     New[Generate project] --> Setup[Adapt spec, stack and design]
     Setup --> Test[Implement then acceptance and coverage]
     Test --> Evidence[Verify and archive current run]
-    Evidence --> Review[Two fresh reviewers approve]
+    Evidence --> RC{New version release?}
+    RC -->|No| Review[Two fresh reviewers approve]
+    RC -->|Yes| AR[Fresh architecture approval and faithful record]
+    AR --> Review
     Review --> PR[Protected PR]
     PR --> Tag[Authorized tag release]
     Tag --> Report[Current report and durable evidence]
@@ -83,3 +86,25 @@ map source ownership, failure/lifecycle boundaries and verification limits.
   retained records still fail on missing, changed, duplicate or unsafe paths.
 
 See [privacy boundary](../PRIVACY.md) and the stable privacy requirement mapping.
+
+## Architecture approval for every release
+
+- Given any new version candidate (including patch, prerelease or docs-only), after
+  candidate checks/evidence, a fresh read-only architecture expert inspects the
+  cumulative diff since the previous published release and current whole-product
+  architecture, source, diagrams, known failures and verification gaps.
+- Given a task-level N/A or earlier implementation architecture preflight, release
+  architecture review is still required and cannot replace either final reviewer.
+- Given missing approval or unresolved blockers, the agent must not create/push
+  the release tag, dispatch release, sign or publish.
+- Given the exact frozen pre-attestation snapshot, the record names actual reviewer,
+  UTC date, version, prior release, scope, findings, verdict and residual gaps.
+  Final reviewers verify that only faithful architecture attestation was added,
+  then approve the final canonical digest including that record. Any other changed
+  input needs renewed architecture review; final changes require a new final pair.
+- Given an interrupted transport retry of the same version and byte-identical
+  candidate, record its identity/retry reason before reusing the actual verdict.
+  Never overwrite an already published release or weaken existing retry rules.
+
+This is a required agent-session review, not a newly implemented CI judgment gate.
+See [release procedure](../RELEASING.md#release-architecture-review).

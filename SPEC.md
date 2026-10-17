@@ -194,7 +194,15 @@ Release fixtures must index current code/documents and reject excluded inputs.
   architecture expert's approach review before dependent implementation. Resolve
   material uncertainty with the user and revisit material departures. Reconcile
   source and rendered diagrams; architecture review is separate from UI preflight
-  and both final approvals. Documentation is not runtime verification. (WF-ARCH-001)
+  and both final approvals. Documentation is not runtime verification. Every new version candidate, including
+  patch, prerelease and documentation-only
+  releases, MUST receive a fresh architecture expert's explicit approval after
+  checks/evidence and before two final reviewers and release authorization steps.
+  Task-level N/A MUST NOT waive release review. Record cumulative release scope,
+  exact pre-attestation snapshot, actual reviewer/verdict, findings and gaps; block
+  tag creation/push, release dispatch, signing and publication without approval.
+  The verdict record is included in the final canonical candidate; do not add a
+  digest exclusion. Changed inputs require renewed architecture review. (WF-ARCH-001)
 
 - **NFR-011**: Personal application screenshots, device dumps/logs and account
   content MUST remain private local evidence and MUST NOT enter Git or public

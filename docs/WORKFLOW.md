@@ -19,7 +19,13 @@ flowchart TD
     Contract --> Code[Implement then update acceptance tests]
     Code --> Check[Coverage, host and relevant E2E checks]
     Check --> Evidence[Inspect renders, archive raw evidence]
-    Evidence --> Review[Two fresh independent final reviewers]
+    Evidence --> RC{New version release?}
+    RC -->|No| Review[Two fresh independent final reviewers]
+    RC -->|Yes| RA[Fresh release architecture review]
+    RA --> AV{Explicit approval?}
+    AV -->|No or blockers| Contract
+    AV -->|Yes| ATT[Record only actual verdict]
+    ATT --> Review
     Review --> Both{Both approve exact candidate?}
     Both -->|No or changed candidate| Contract
     Both -->|Yes| Deliver[Commit and authorized PR or release]
@@ -107,3 +113,14 @@ CRG updates during development with bounded diagnosed fallback. Graphify updates
 only in authorized release builds, excluding evidence/local config/images.
 For UI work inspect and reconcile [latest approved master views](ui-reference/README.md)
 against actual renders before final review. Historical test captures remain archived.
+
+## Every release candidate
+
+After completed checks/evidence, every new version needs fresh architecture
+approval before the two final reviewers, even for task N/A, patches, prereleases
+and docs-only. Inspect cumulative release changes and current architecture;
+record actual verdict/findings/gaps against the exact pre-attestation snapshot.
+Only faithful attestation may be added before final reviewers approve the full
+canonical candidate. Missing approval/blockers stop tag/push/dispatch/sign/publish.
+See [release architecture review](RELEASING.md#release-architecture-review) for
+binding, freshness/retry rules and the distinction from existing automated CI.

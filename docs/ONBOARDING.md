@@ -99,3 +99,8 @@ Follow [graph-first setup](GRAPH_FIRST.md) once per machine for both clients;
 restart and review Codex /hooks. Global settings/permissions are preserved and
 backed up. Enable actual [UI references](ui-reference/README.md) when replacing
 the CLI with a UI; declare source patterns/states before claiming freshness.
+
+Before any version release, complete the
+[release architecture checkpoint](RELEASING.md#release-architecture-review), even
+for patches or docs-only. A fresh expert approves inspected inputs before the two
+final reviewers; a task-level no-impact note cannot waive this release obligation.

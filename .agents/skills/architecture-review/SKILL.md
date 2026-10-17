@@ -1,6 +1,6 @@
 ---
 name: architecture-review
-description: Review architectural impact before implementation when a change may affect ownership, interfaces, lifecycle, concurrency, persistence, shared behavior or delivery boundaries. Also use for source-based architecture documentation and design reviews.
+description: Review architectural impact before implementation when a change may affect ownership, interfaces, lifecycle, concurrency, persistence, shared behavior or delivery boundaries. Also use for every new version release candidate, source-based architecture documentation and design reviews.
 ---
 
 Read AGENTS.md, docs/ARCHITECTURE.md, docs/architecture/README.md and the owning
@@ -36,3 +36,17 @@ only for a material lasting decision, recording alternatives and consequences.
 This preflight does not approve rendered UI or replace either of the two fresh
 final-candidate reviewers. It creates no unattended service or CI-authenticated
 expert gate; the agent session must perform and record the real review.
+
+For EVERY new version release candidate, create a fresh read-only architecture
+expert even for patch/prerelease/docs-only or task N/A. Inspect cumulative changes
+since the previous published release and the current whole-product/component/
+feature architecture, actual source/tests, invariants, diagrams, risks and gaps.
+Record explicit approval/blockers plus actual identity/UTC time/version/baseline
+and exact frozen pre-attestation tree/digest before final code review. No approval
+or unresolved blockers means no release tag/push/dispatch/signing/publication.
+Only faithful attestation may be added afterward; two different fresh final agents
+verify that delta and approve the full final digest including the record. Any other
+changed input requires renewed fresh architecture review. Do not add digest
+exclusions or claim self-containing hash approval. Same-version byte-identical
+transport retries may reuse the actual verdict with recorded reason/identity,
+subject to existing no-overwrite/retry rules. See docs/RELEASING.md.

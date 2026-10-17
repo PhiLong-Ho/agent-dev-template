@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Require a fresh architecture review for every release candidate before final
+  code review, including patch, prerelease and documentation-only versions.
+
 - Block raw device evidence from Git/public host uploads; document private capture
   and explicit privacy withdrawal. CI publishes only its guarded current run.
 

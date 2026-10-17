@@ -113,3 +113,12 @@ iteration commands and scenario adapters before claiming selection exists. The
 completed candidate still runs tools/quality.py and applicable product acceptance;
 release commands/reports retain their current gates. Keep Android/ADB and other
 platform details in the adopting project's guide.
+
+## Release freeze
+
+For every new version candidate, completed checks/evidence are followed by the
+[mandatory release architecture review](RELEASING.md#release-architecture-review).
+Freeze its inspected snapshot, record the actual verdict without other input
+changes, then freeze the full candidate for the two fresh final reviewers. Task
+N/A never waives a release review. Re-review changed inputs; reuse only a recorded
+same-version byte-identical transport retry under existing release rules.
