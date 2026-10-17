@@ -81,6 +81,9 @@ map source ownership, failure/lifecycle boundaries and verification limits.
 
 - Given raw tracked test screenshots/logs, the host privacy gate fails.
 - Given contaminated current host inputs, packaging/upload is withheld.
+- Given integrity-valid release evidence containing forbidden member paths or
+  capture/archive signatures, publication fails before any GitHub call without
+  extracting the archive. Safe current-host archives still pass validation.
 - Given safe current host reports, the guard permits existing packaging.
 - Given explicit privacy withdrawal, unavailable evidence is not counted as verified;
   retained records still fail on missing, changed, duplicate or unsafe paths.

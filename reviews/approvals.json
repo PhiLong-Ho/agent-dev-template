@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "candidate_sha256": "34bbe5667ece41b74443f78a7900e39914b971b17c9aadc3d68a14fee3ff81e1",
+  "candidate_sha256": "a3024cbb85c894dc1ef6ffeda6fdc48014f2e0027653a7fd1816a03d185237c0",
   "reviews": [
     {
-      "agent_id": "/root/arch_release_final_a",
+      "agent_id": "/root/template_archive_corrected_a",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T13:21:05Z",
-      "scope": "All 20 staged template policy/spec/coverage/evidence files, canonical digest behavior, host evidence reuse and rendered delivery diagrams.",
-      "summary": "No blocking findings. Verified archive/member/source bindings and unchanged host executable/test/CI inputs. Architecture judgment remains a manual session obligation. Excludes version release, broader dirty DexDroid candidate, device acceptance and privacy-history replacement."
+      "reviewed_at": "2026-10-17T14:20:28Z",
+      "scope": "Complete staged archive privacy candidate, actual source/tests/spec/coverage, five current renders and four evidence bundles. No version release or DexDroid runtime approval.",
+      "summary": "No blocking findings. Integrity verification precedes shared privacy validation before release delivery. Routine CI/release diagram boundaries are accurate. Verified archive/member/source bindings and disclosed document-only host reuse; bounded path/signature checks do not establish semantic privacy."
     },
     {
-      "agent_id": "/root/arch_release_final_b",
+      "agent_id": "/root/template_archive_corrected_b",
       "fresh_agent": true,
       "verdict": "approve",
-      "reviewed_at": "2026-10-17T13:21:16Z",
-      "scope": "All 20 staged template policy/spec/coverage/evidence files, canonical digest behavior, host evidence reuse and rendered delivery diagrams.",
-      "summary": "No blocking findings. Verified archive/member/source bindings and unchanged host executable/test/CI inputs. Architecture judgment remains a manual session obligation. Excludes version release, broader dirty DexDroid candidate, device acceptance and privacy-history replacement."
+      "reviewed_at": "2026-10-17T14:20:39Z",
+      "scope": "Complete staged archive privacy candidate, actual source/tests/spec/coverage, five current renders and four evidence bundles. No version release or DexDroid runtime approval.",
+      "summary": "No blocking findings. Integrity verification precedes shared privacy validation before release delivery. Routine CI/release diagram boundaries are accurate. Verified archive/member/source bindings and disclosed document-only host reuse; bounded path/signature checks do not establish semantic privacy."
     }
   ]
 }

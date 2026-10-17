@@ -14,6 +14,13 @@ redact bytes silently or count the run as verified. The guard rejects raw tracke
 testresults, capture/device paths and common media/archive signatures. This is a
 bounded backstop, not semantic detection of all private text or encoded content.
 Safe-looking filenames and hashes do not establish permission to publish.
+Routine [host CI](../.github/workflows/quality.yml) checks its current raw directory
+before generic evidence packing and artifact upload. It does not run the release
+archive-member privacy check. [Release tooling](../tools/release.py) checks current
+host input before sealing; its validate/export/publish path repeats the shared
+path/signature policy over integrity-verified archive members, reading bounded
+uncompressed prefixes without extraction. Private local archive tooling retains
+its general integrity scope.
 
 Privacy removal overrides historical-evidence retention. Record withdrawal and
 availability honestly; retained bytes still require their original hashes.
@@ -38,8 +45,13 @@ flowchart TB
     Fixture[Reviewed synthetic public references] --> Source[Safe source and summaries]
     Source --> Host[Current host run]
     Host --> Guard[Indexed paths and public input privacy guard]
-    Guard -->|Pass| Upload[Current run artifact or release evidence]
+    Guard -->|Routine CI pass| Pack[Generic evidence pack and integrity check]
+    Pack --> Artifact[Upload routine current-run artifact]
+    Guard -->|Release build pass| Seal[Seal release host archive]
+    Seal --> Members[Verify archive integrity then member privacy]
+    Members -->|Pass| Release[Export or publish release evidence]
     Guard -->|Reject| Block[Fail job and withhold upload]
+    Members -->|Reject| Block
     Withdraw[Privacy removal request] --> Notice[Explicit unavailable evidence notice]
 ```
 
@@ -50,19 +62,42 @@ sequenceDiagram
     participant Test as Device tester
     participant Local as Ignored private storage
     participant Git as Candidate and pre-push gate
-    participant CI as Current host results
-    participant Guard as Public input guard
-    participant GH as GitHub artifact
+    participant CI as Host workflow
+    participant Rel as Release tools
+    participant Guard as Shared privacy guard
+    participant GH as GitHub storage
     Test->>Local: Capture personal app only when necessary
     Note over Local,GH: No automatic transfer of private device evidence
     Git->>Git: Reject indexed or pushed raw evidence paths
     Git->>CI: Reviewed safe source
-    CI->>Guard: Only this run's host files
-    alt Safe input
-        Guard-->>CI: Permit packaging
-        CI->>GH: Upload guarded current run
-    else Capture, device dump or nested archive
-        Guard-->>CI: Fail job
-        Note over CI,GH: Upload is withheld even on failed test runs
+    alt Routine host CI
+        CI->>Guard: Current run directory
+        alt Safe input
+            Guard-->>CI: Permit packing
+            CI->>CI: Generic evidence pack and integrity check
+            CI->>GH: Upload routine current-run artifact
+        else Capture, device dump or nested archive
+            Guard-->>CI: Fail job
+            Note over CI,GH: Artifact upload is withheld
+        end
+    else Release build and later delivery
+        CI->>Rel: Current release host results
+        Rel->>Guard: Uncompressed current-host input
+        alt Safe input
+            Guard-->>Rel: Permit sealing
+            Rel->>Rel: Seal release archive and verify integrity
+            Note over Rel,Guard: Release validation before export or publication
+            Rel->>Guard: Verified member paths and uncompressed prefixes
+            alt Safe archive members
+                Guard-->>Rel: Permit release delivery
+                Rel->>GH: Publish release evidence when authorized
+            else Forbidden member or capture/archive signature
+                Guard-->>Rel: Fail validation
+                Note over Rel,GH: Export and publication are withheld
+            end
+        else Capture, device dump or nested archive
+            Guard-->>Rel: Fail build
+            Note over Rel,GH: Release packaging is withheld
+        end
     end
 ```

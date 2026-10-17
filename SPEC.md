@@ -208,6 +208,9 @@ Release fixtures must index current code/documents and reject excluded inputs.
   content MUST remain private local evidence and MUST NOT enter Git or public
   artifacts. Public host uploads MUST include only their current run and pass an
   indexed-path and actual-input privacy guard; rejected inputs MUST block upload.
+  Public release packaging MUST inspect uncompressed current-host input before
+  sealing. Publication MUST reject forbidden archive member paths or capture/archive
+  signatures even when their member, archive and package hashes are valid.
   Intentional public UI references MUST use reviewed synthetic fixtures. Privacy
   withdrawal MUST be explicit and never count as verified evidence; retained
   historical files MUST still pass original integrity checks. (WF-PRIVACY-001)

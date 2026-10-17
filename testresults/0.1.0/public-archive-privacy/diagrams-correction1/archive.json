@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "c584a87c8f8b55a435b973a06751721f5b7f443e16500f76e2433260771633ee",
+  "archive_bytes": 531935,
+  "file_count": 16,
+  "raw_bytes": 572224,
+  "created_utc": "2026-10-17T14:16:41.242496+00:00",
+  "context": {
+    "scope": "Five current source-bound privacy/component/workflow Mermaid renders after documentation-only correction: routine CI raw-input guard is separate from release archive-member validation. Two privacy diagrams changed; three unchanged diagrams regenerated. Author inspected affected renders; no fresh host-suite execution, product UI or publication.",
+    "packaging_commit": "083daa9da7cb7c4d0100f1f1d7941b2e740932a2",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\evidence-archives\\agent-dev-template\\0.1.0\\public-archive-privacy-20261017-diagrams-correction1\\evidence.zip"
+  }
+}

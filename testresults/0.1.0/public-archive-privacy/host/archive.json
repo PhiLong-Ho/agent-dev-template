@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "8d63981446572db6c6ca850372979609e7deba5270ec195a62ce7eb5884c4562",
+  "archive_bytes": 41270,
+  "file_count": 17,
+  "raw_bytes": 212014,
+  "created_utc": "2026-10-17T14:10:26.085302+00:00",
+  "context": {
+    "scope": "Current Windows host verification for public archive privacy integration: 108 cases, 106 passed, 2 platform skips; lint, format, UI-reference no-product scope, requirements, docs, privacy and coverage checks. Source and configuration bound by host-results.json; no device/UI/performance or remote publication.",
+    "packaging_commit": "083daa9da7cb7c4d0100f1f1d7941b2e740932a2",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\evidence-archives\\agent-dev-template\\0.1.0\\public-archive-privacy-20261017-host\\evidence.zip"
+  }
+}

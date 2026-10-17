@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "archive": "evidence.zip",
+  "archive_sha256": "b83fc0ca209ff19f0e2e07e28f576bebe87a7a9aa998dd26a094ae622b852fcc",
+  "archive_bytes": 9019,
+  "file_count": 16,
+  "raw_bytes": 29445,
+  "created_utc": "2026-10-17T14:17:29.563139+00:00",
+  "context": {
+    "scope": "Documentation-only scope correction checks: docs, requirements, coverage, Ruff check/format, repository privacy and whitespace; current source compared with prior host source confirms unchanged implementation/tests/configuration. Original 106-pass/2-skip host execution is reused, not rerun. No product/device/performance or remote execution.",
+    "packaging_commit": "083daa9da7cb7c4d0100f1f1d7941b2e740932a2",
+    "packaging_tree_dirty": true
+  },
+  "storage": {
+    "kind": "local-only",
+    "path": "D:\\Workspace\\evidence-archives\\agent-dev-template\\0.1.0\\public-archive-privacy-20261017-doc-correction1\\evidence.zip"
+  }
+}
